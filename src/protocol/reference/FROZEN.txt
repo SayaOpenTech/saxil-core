@@ -1,0 +1,2 @@
+W1 v1 FROZEN REFERENCE — copied from latent-speech-bridge-lab/src/sml_runtime
+Do not mutate these files. Voice extension lives in protocol/voice_extension/.

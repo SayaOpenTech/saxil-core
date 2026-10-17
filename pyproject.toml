@@ -1,0 +1,50 @@
+[build-system]
+requires = ["setuptools>=77.0.3", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "saxil-core"
+version = "0.1.0"
+description = "SAXIL Core SDK — W2 encode/decode (Apache-2.0)"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "Apache-2.0"
+license-files = ["LICENSE", "NOTICE"]
+authors = [{ name = "Pedram Niloofari" }]
+keywords = ["saxil", "w2", "codec", "protocol"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Developers",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Software Development :: Libraries",
+]
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+saxil = "saxil_core.cli:main"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["saxil_core*", "protocol*"]
+
+[tool.setuptools.package-data]
+protocol = ["reference/FROZEN.txt", "py.typed"]
+
+[tool.pytest.ini_options]
+# Public package suite only. Research/vendor-integrity tests live in tests_internal/
+# and are run explicitly: pytest tests tests_internal
+testpaths = ["tests"]
+pythonpath = ["src"]
+norecursedirs = ["tests_internal", ".venv*", "dist", "build", "*.egg-info"]

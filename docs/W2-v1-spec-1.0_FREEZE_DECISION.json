@@ -1,0 +1,17 @@
+{
+  "record_id": "W2_SPEC_FREEZE_DECISION",
+  "status": "OWNER_APPROVED / FROZEN",
+  "freeze_id": "W2-v1-spec-1.0",
+  "frozen_utc": "2026-10-16T22:29:59.170038+00:00",
+  "canonical_path": "docs/W2-v1-spec-1.0.md",
+  "sha256": "146ef2bd17474ba405caf2d56f726e38344e14e717b32843e666bdc021e66bad",
+  "size_bytes": 6737,
+  "source_proposal": "W2_NORMATIVE_SPEC_FINAL_PROPOSAL.md (owner-approved freeze package)",
+  "bytes_modified": false,
+  "content_note": "Internal proposal/draft wording remains in file body by design; official status is this sidecar only.",
+  "wire": {
+    "byte0": 2,
+    "profile": "W2-v1"
+  },
+  "owner_approval_dated": "2026-10-17"
+}

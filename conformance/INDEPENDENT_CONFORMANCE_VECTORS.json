@@ -1,0 +1,368 @@
+{
+  "schema_version": 2,
+  "profile": "W2-v1",
+  "protocol_version_byte": 2,
+  "software_under_test": "saxil-core 0.1.0-rc.1",
+  "notes": [
+    "INDEPENDENT vectors: expected hex derived from normative tag/enum/KIND layout without treating same-codec round-trip as proof.",
+    "COMPATIBILITY_ONLY vectors: expected bytes taken from frozen research encoder for cross-impl checks; not independent normative proof.",
+    "Phase 4 adds ENT/NUM/DATE/CMP release-critical independent coverage.",
+    "Do not invent AST constructs beyond SemanticFrame/VerbalUtt supported by W2."
+  ],
+  "critical_coverage_acceptance": {
+    "ENT": "At least one independent valid object Ent (with and without name) + one invalid eid",
+    "NUM": "Independent zero, non-zero currency unit, KIND_DIGITS path + invalid negative via encode contract",
+    "DATE": "Independent calendar Date on TAG_TIME + invalid month on wire",
+    "CMP": "Independent comparison with ASCII left + Num right + invalid op on wire",
+    "PASS_requires": "All listed positive vectors encode/decode to hand-derived hex; negatives reject with documented codes"
+  },
+  "vectors": [
+    {
+      "id": "WV-IND-001",
+      "class": "valid",
+      "evidence_class": "INDEPENDENT",
+      "spec_refs": ["§4 Wire", "§5.1 SemanticFrame required tags", "§6 Canonical field order"],
+      "description": "Minimal semantic frame: four required enums only (user/ask/query_price/pos).",
+      "ast": {
+        "type": "semantic",
+        "speaker": "user",
+        "act": "ask",
+        "intent": "query_price",
+        "polarity": "pos"
+      },
+      "expected_hex": "0210040100020003000400",
+      "derivation": "byte0=2, MSG_SEMANTIC=0x10, n_fields=4; tags 0x01..0x04 each with enum index 0; fields sorted by tag ascending.",
+      "source": "manual_derivation_from_tag_enum_tables"
+    },
+    {
+      "id": "WV-IND-002",
+      "class": "valid",
+      "evidence_class": "INDEPENDENT",
+      "spec_refs": ["§5.1", "§6"],
+      "description": "Required four + ACTION=query (tag 0x05, index 0).",
+      "ast": {
+        "type": "semantic",
+        "speaker": "user",
+        "act": "ask",
+        "intent": "query_price",
+        "polarity": "pos",
+        "action": "query"
+      },
+      "expected_hex": "02100501000200030004000500",
+      "derivation": "Same as WV-IND-001 plus TAG_ACTION=0x05 payload 0x00 (ACTION.query).",
+      "source": "manual_derivation_from_tag_enum_tables"
+    },
+    {
+      "id": "WV-IND-003",
+      "class": "valid",
+      "evidence_class": "INDEPENDENT",
+      "spec_refs": ["§5.1 polarity"],
+      "description": "Polarity neg (enum index 1).",
+      "ast": {
+        "type": "semantic",
+        "speaker": "user",
+        "act": "ask",
+        "intent": "query_price",
+        "polarity": "neg"
+      },
+      "expected_hex": "0210040100020003000401",
+      "derivation": "TAG_POLARITY payload 0x01 (POLARITY.neg).",
+      "source": "manual_derivation_from_tag_enum_tables"
+    },
+    {
+      "id": "WV-IND-004",
+      "class": "valid",
+      "evidence_class": "INDEPENDENT",
+      "spec_refs": ["§5.1"],
+      "description": "Agent assert state_price with ACTION=state.",
+      "ast": {
+        "type": "semantic",
+        "speaker": "agent",
+        "act": "assert",
+        "intent": "state_price",
+        "polarity": "pos",
+        "action": "state"
+      },
+      "expected_hex": "02100501010201030104000501",
+      "derivation": "speaker=1, act=1, intent=1 (state_price), polarity=0, action=1 (state).",
+      "source": "manual_derivation_from_tag_enum_tables"
+    },
+    {
+      "id": "WV-IND-005",
+      "class": "valid",
+      "evidence_class": "INDEPENDENT",
+      "spec_refs": ["§5.2 VerbalUtt", "§4 Wire"],
+      "description": "Minimal verbal: one interned LEX 'قیمت' (LEX index 0).",
+      "ast": {
+        "type": "verbal",
+        "utt_type": "statement",
+        "units": [{"op": "LEX", "w": "قیمت"}]
+      },
+      "expected_hex": "021100014000",
+      "derivation": "byte0=2, MSG_VERBAL=0x11, UTT_TYPE.statement=0, n_units=1, OP_LEX_ID=0x40, lex_index=0.",
+      "source": "manual_derivation_from_opcode_lex_tables"
+    },
+    {
+      "id": "WV-IND-ENT-001",
+      "class": "valid",
+      "category": "ENT",
+      "evidence_class": "INDEPENDENT",
+      "spec_refs": ["§3.2 Ent", "TAG_OBJECT=0x06", "KIND_ENT=0x24"],
+      "description": "Semantic frame with object Ent(eid=1, typ=product) no name/ref.",
+      "ast": {
+        "type": "semantic",
+        "speaker": "user",
+        "act": "ask",
+        "intent": "query_price",
+        "polarity": "pos",
+        "object": {"eid": 1, "typ": "product"}
+      },
+      "expected_hex": "0210050100020003000400062401000000",
+      "derivation": "n_fields=5; TAG_OBJECT + KIND_ENT|eid=1|ENT_TYPE.product=0|REF.\"\"=0|flags=0.",
+      "source": "manual_derivation_from_kind_ent_layout"
+    },
+    {
+      "id": "WV-IND-ENT-002",
+      "class": "valid",
+      "category": "ENT",
+      "evidence_class": "INDEPENDENT",
+      "spec_refs": ["§3.2 Ent", "literal UTF-8"],
+      "description": "Ent with ASCII name 'X' (flags bit0 set + len-prefixed UTF-8).",
+      "ast": {
+        "type": "semantic",
+        "speaker": "user",
+        "act": "ask",
+        "intent": "query_price",
+        "polarity": "pos",
+        "object": {"eid": 1, "typ": "product", "name": "X"}
+      },
+      "expected_hex": "02100501000200030004000624010000010158",
+      "derivation": "flags=1; lit len=1; UTF-8 0x58 ('X').",
+      "source": "manual_derivation_from_kind_ent_layout"
+    },
+    {
+      "id": "WV-IND-NUM-001",
+      "class": "valid",
+      "category": "NUM",
+      "evidence_class": "INDEPENDENT",
+      "spec_refs": ["§3.3 Num", "KIND_NUM=0x20", "TAG_ATTR=0x07"],
+      "description": "Attribute Num magnitude 0, empty currency unit (index 0).",
+      "ast": {
+        "type": "semantic",
+        "speaker": "user",
+        "act": "ask",
+        "intent": "query_price",
+        "polarity": "pos",
+        "attribute": {"kind": "num", "v": 0}
+      },
+      "expected_hex": "021005010002000300040007200000",
+      "derivation": "KIND_NUM|CURRENCY.\"\"=0|varint(0)=0x00. Unsigned varint; zero is representable.",
+      "source": "manual_derivation_from_kind_num_varint"
+    },
+    {
+      "id": "WV-IND-NUM-002",
+      "class": "valid",
+      "category": "NUM",
+      "evidence_class": "INDEPENDENT",
+      "spec_refs": ["§3.3 Num", "CURRENCY"],
+      "description": "Attribute Num(100, unit=toman).",
+      "ast": {
+        "type": "semantic",
+        "speaker": "user",
+        "act": "ask",
+        "intent": "query_price",
+        "polarity": "pos",
+        "attribute": {"kind": "num", "v": 100, "unit": "toman"}
+      },
+      "expected_hex": "021005010002000300040007200164",
+      "derivation": "KIND_NUM|CURRENCY.toman=1|varint(100)=0x64.",
+      "source": "manual_derivation_from_kind_num_varint"
+    },
+    {
+      "id": "WV-IND-NUM-003",
+      "class": "valid",
+      "category": "NUM",
+      "evidence_class": "INDEPENDENT",
+      "spec_refs": ["§3.3 Num", "KIND_DIGITS=0x28"],
+      "description": "Attribute digit-string Num('007') preserves leading zeros via KIND_DIGITS.",
+      "ast": {
+        "type": "semantic",
+        "speaker": "user",
+        "act": "ask",
+        "intent": "query_price",
+        "polarity": "pos",
+        "attribute": {"kind": "num", "v": "007"}
+      },
+      "expected_hex": "021005010002000300040007280003303037",
+      "derivation": "KIND_DIGITS|unit=0|len=3|ASCII '007'.",
+      "source": "manual_derivation_from_kind_digits"
+    },
+    {
+      "id": "WV-IND-DATE-001",
+      "class": "valid",
+      "category": "DATE",
+      "evidence_class": "INDEPENDENT",
+      "spec_refs": ["§3.3 Date", "KIND_DATE=0x22", "TAG_TIME=0x08"],
+      "description": "Date(2024,10,16) on TAG_TIME. No timezone in W2 Date contract.",
+      "ast": {
+        "type": "semantic",
+        "speaker": "user",
+        "act": "ask",
+        "intent": "query_price",
+        "polarity": "pos",
+        "time": {"y": 2024, "mo": 10, "d": 16}
+      },
+      "expected_hex": "0210050100020003000400082207e80a10",
+      "derivation": "KIND_DATE + big-endian u16 year 0x07E8 + u8 mo=10 + u8 d=16.",
+      "source": "manual_derivation_from_kind_date_struct"
+    },
+    {
+      "id": "WV-IND-CMP-001",
+      "class": "valid",
+      "category": "CMP",
+      "evidence_class": "INDEPENDENT",
+      "spec_refs": ["§3.3 Cmp", "KIND_CMP=0x27", "TAG_COND=0x0C"],
+      "description": "Cond Cmp(op=lt, left=price, right=100).",
+      "ast": {
+        "type": "semantic",
+        "speaker": "user",
+        "act": "ask",
+        "intent": "query_price",
+        "polarity": "pos",
+        "cond": {"op": "lt", "left": "price", "right": 100}
+      },
+      "expected_hex": "02100501000200030004000c2702057072696365200064",
+      "derivation": "KIND_CMP|CMP_OP.lt=2|left_len=5|'price'|KIND_NUM unit0 varint(100).",
+      "source": "manual_derivation_from_kind_cmp_layout"
+    },
+    {
+      "id": "WV-IND-N01",
+      "class": "invalid",
+      "evidence_class": "INDEPENDENT",
+      "spec_refs": ["§8 Errors", "§4 Wire version"],
+      "description": "Empty payload",
+      "encoded_hex": "",
+      "expected_error_codes": ["truncate", "invalid_input"],
+      "source": "normative_empty_reject"
+    },
+    {
+      "id": "WV-IND-N02",
+      "class": "invalid",
+      "evidence_class": "INDEPENDENT",
+      "spec_refs": ["§4 Wire version"],
+      "description": "Unsupported version byte 0",
+      "encoded_hex": "00",
+      "expected_error_codes": ["unsupported_version"],
+      "source": "normative_version_reject"
+    },
+    {
+      "id": "WV-IND-N03",
+      "class": "invalid",
+      "evidence_class": "INDEPENDENT",
+      "spec_refs": ["§4 Wire version"],
+      "description": "W1 version presented to W2-only decode",
+      "encoded_hex": "01",
+      "expected_error_codes": ["unsupported_version"],
+      "source": "normative_w2_only_path"
+    },
+    {
+      "id": "WV-IND-N04",
+      "class": "invalid",
+      "evidence_class": "INDEPENDENT",
+      "spec_refs": ["§4 msg type"],
+      "description": "Unknown W2 msg type 0xFF",
+      "encoded_hex": "02ff",
+      "expected_error_codes": ["unknown_msg_type", "decode_failure"],
+      "source": "normative_unknown_msg"
+    },
+    {
+      "id": "WV-IND-N05",
+      "class": "invalid",
+      "evidence_class": "INDEPENDENT",
+      "spec_refs": ["§7 Limits"],
+      "description": "Oversized claim (> MAX_PACKET 4096)",
+      "encoded_hex_generator": {"prefix_hex": "02", "pad_byte": "00", "total_len": 5000},
+      "expected_error_codes": ["oversized"],
+      "source": "normative_max_packet"
+    },
+    {
+      "id": "WV-IND-N06",
+      "class": "invalid",
+      "evidence_class": "INDEPENDENT",
+      "spec_refs": ["§5.1", "§8"],
+      "description": "Truncated semantic header (version+type only)",
+      "encoded_hex": "0210",
+      "expected_error_codes": ["truncate", "invalid_length"],
+      "source": "normative_truncate"
+    },
+    {
+      "id": "WV-IND-ENT-N01",
+      "class": "invalid",
+      "category": "ENT",
+      "evidence_class": "INDEPENDENT",
+      "spec_refs": ["§3.2 Ent", "eid >= 1"],
+      "description": "TAG_OBJECT with KIND_ENT eid=0 (illegal reference).",
+      "encoded_hex": "0210050100020003000400062400000000",
+      "expected_error_codes": ["invalid_reference", "decode_failure"],
+      "source": "normative_eid_bounds"
+    },
+    {
+      "id": "WV-IND-DATE-N01",
+      "class": "invalid",
+      "category": "DATE",
+      "evidence_class": "INDEPENDENT",
+      "spec_refs": ["§3.3 Date", "mo<=12"],
+      "description": "KIND_DATE with month=13 on TAG_TIME.",
+      "encoded_hex": "0210050100020003000400082207e80d10",
+      "expected_error_codes": ["invalid_date", "decode_failure"],
+      "source": "normative_date_bounds"
+    },
+    {
+      "id": "WV-IND-CMP-N01",
+      "class": "invalid",
+      "category": "CMP",
+      "evidence_class": "INDEPENDENT",
+      "spec_refs": ["§3.3 Cmp", "CMP_OP table"],
+      "description": "KIND_CMP with out-of-range op index 0xFF.",
+      "encoded_hex": "02100501000200030004000c27ff057072696365200064",
+      "expected_error_codes": ["invalid_enum", "decode_failure", "decoder_failure", "enum oob"],
+      "source": "normative_cmp_op_bounds",
+      "observed_note": "Current codec raises ValueError('enum oob') via D.at; SDK maps to decoder_failure — fail-closed (VERIFIED_EXISTING_BEHAVIOR)."
+    },
+    {
+      "id": "WV-COMPAT-001",
+      "class": "valid",
+      "evidence_class": "COMPATIBILITY_ONLY",
+      "spec_refs": ["§9 Compatibility"],
+      "description": "Same as WV-IND-002; stored for original↔SDK matrix.",
+      "ast": {
+        "type": "semantic",
+        "speaker": "user",
+        "act": "ask",
+        "intent": "query_price",
+        "polarity": "pos",
+        "action": "query"
+      },
+      "expected_hex": "02100501000200030004000500",
+      "source": "frozen_cross_impl_reference"
+    },
+    {
+      "id": "WV-COMPAT-ENT-001",
+      "class": "valid",
+      "category": "ENT",
+      "evidence_class": "COMPATIBILITY_ONLY",
+      "spec_refs": ["§9"],
+      "description": "Mirror of WV-IND-ENT-001 for cross-impl matrix.",
+      "ast": {
+        "type": "semantic",
+        "speaker": "user",
+        "act": "ask",
+        "intent": "query_price",
+        "polarity": "pos",
+        "object": {"eid": 1, "typ": "product"}
+      },
+      "expected_hex": "0210050100020003000400062401000000",
+      "source": "frozen_cross_impl_reference"
+    }
+  ]
+}

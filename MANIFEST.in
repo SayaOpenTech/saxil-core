@@ -1,0 +1,11 @@
+include LICENSE
+include NOTICE
+recursive-include src/protocol *.py *.txt
+recursive-include docs *.md *.json
+recursive-include conformance *.json *.md
+recursive-include tests *.py
+include README.md
+include CHANGELOG.md
+prune tests_internal
+global-exclude __pycache__ *.py[cod] map_gold.py
+global-exclude .venv* .pytest_cache
