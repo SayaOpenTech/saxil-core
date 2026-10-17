@@ -32,29 +32,29 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          mkdir -p dist
+          mkdir -p dist checksums
+          gh release download v0.1.0 --repo SayaOpenTech/saxil-core --dir checksums \
+            --pattern "SHA256SUMS"
           gh release download v0.1.0 --repo SayaOpenTech/saxil-core --dir dist \
             --pattern "saxil_core-0.1.0-py3-none-any.whl" \
-            --pattern "saxil_core-0.1.0.tar.gz" \
-            --pattern "SHA256SUMS"
-          ls -la dist
+            --pattern "saxil_core-0.1.0.tar.gz"
+          ls -la dist checksums
 
       - name: Verify SHA-256 before upload
         run: |
           set -euo pipefail
-          cd dist
           EXPECT_WHEEL=28c56cb52849bd6f4803d3e322ee7b93f2a1c1a48a4532aa41fca655347d3cf0
           EXPECT_SDIST=22df4b8a4655571e80147010981cda646d369c1939b77dc30a26595c7d2860b2
-          ACT_WHEEL=$(sha256sum saxil_core-0.1.0-py3-none-any.whl | awk '{print $1}')
-          ACT_SDIST=$(sha256sum saxil_core-0.1.0.tar.gz | awk '{print $1}')
+          ACT_WHEEL=$(sha256sum dist/saxil_core-0.1.0-py3-none-any.whl | awk '{print $1}')
+          ACT_SDIST=$(sha256sum dist/saxil_core-0.1.0.tar.gz | awk '{print $1}')
           echo "wheel $ACT_WHEEL"
           echo "sdist $ACT_SDIST"
           test "$ACT_WHEEL" = "$EXPECT_WHEEL"
           test "$ACT_SDIST" = "$EXPECT_SDIST"
-          # also cross-check SHA256SUMS file if present
-          if [ -f SHA256SUMS ]; then
-            sha256sum -c SHA256SUMS
-          fi
+          # Cross-check against release SHA256SUMS (kept outside packages-dir)
+          (cd dist && sha256sum -c ../checksums/SHA256SUMS)
+          # Ensure only wheel+sdist will be uploaded
+          test "$(ls -1 dist | wc -l)" -eq 2
 
       - name: Publish to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
