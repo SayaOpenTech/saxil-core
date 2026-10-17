@@ -1,0 +1,62 @@
+name: Publish to PyPI
+
+on:
+  workflow_dispatch:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    name: Publish saxil-core 0.1.0 to PyPI
+    runs-on: ubuntu-latest
+    environment: pypi
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - name: Verify ref is v0.1.0
+        run: |
+          set -euo pipefail
+          echo "github.ref=${GITHUB_REF}"
+          echo "github.ref_name=${GITHUB_REF_NAME}"
+          if [ "${GITHUB_REF}" != "refs/tags/v0.1.0" ] && [ "${GITHUB_REF_NAME}" != "v0.1.0" ]; then
+            echo "Refusing publish: only tag v0.1.0 is authorized for this workflow."
+            exit 1
+          fi
+
+      - name: Download GitHub Release assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p dist
+          gh release download v0.1.0 --repo SayaOpenTech/saxil-core --dir dist \
+            --pattern "saxil_core-0.1.0-py3-none-any.whl" \
+            --pattern "saxil_core-0.1.0.tar.gz" \
+            --pattern "SHA256SUMS"
+          ls -la dist
+
+      - name: Verify SHA-256 before upload
+        run: |
+          set -euo pipefail
+          cd dist
+          EXPECT_WHEEL=28c56cb52849bd6f4803d3e322ee7b93f2a1c1a48a4532aa41fca655347d3cf0
+          EXPECT_SDIST=22df4b8a4655571e80147010981cda646d369c1939b77dc30a26595c7d2860b2
+          ACT_WHEEL=$(sha256sum saxil_core-0.1.0-py3-none-any.whl | awk '{print $1}')
+          ACT_SDIST=$(sha256sum saxil_core-0.1.0.tar.gz | awk '{print $1}')
+          echo "wheel $ACT_WHEEL"
+          echo "sdist $ACT_SDIST"
+          test "$ACT_WHEEL" = "$EXPECT_WHEEL"
+          test "$ACT_SDIST" = "$EXPECT_SDIST"
+          # also cross-check SHA256SUMS file if present
+          if [ -f SHA256SUMS ]; then
+            sha256sum -c SHA256SUMS
+          fi
+
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages-dir: dist
