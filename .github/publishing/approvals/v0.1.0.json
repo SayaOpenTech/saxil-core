@@ -1,0 +1,20 @@
+{
+  "version": "0.1.0",
+  "tag": "v0.1.0",
+  "commit": "47f1ee366bb4873ffd6a73115e88b4d636c245d6",
+  "release_id": 415785237,
+  "publish_allowed": false,
+  "build": null,
+  "assets": [
+    {
+      "name": "saxil_core-0.1.0-py3-none-any.whl",
+      "id": 650382644,
+      "sha256": "28c56cb52849bd6f4803d3e322ee7b93f2a1c1a48a4532aa41fca655347d3cf0"
+    },
+    {
+      "name": "saxil_core-0.1.0.tar.gz",
+      "id": 650382646,
+      "sha256": "22df4b8a4655571e80147010981cda646d369c1939b77dc30a26595c7d2860b2"
+    }
+  ]
+}
