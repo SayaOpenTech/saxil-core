@@ -1,62 +1,105 @@
 name: Publish to PyPI
 
 on:
+  pull_request:
+    branches: [main]
+    paths: ['.github/workflows/publish-pypi.yml', '.github/publishing/**']
   workflow_dispatch:
-  release:
-    types: [published]
+    inputs:
+      tag:
+        description: Approved release tag (v0.1.0 is verification-only)
+        required: true
+        default: v0.1.0
+        type: string
+      mode:
+        description: Publishing requires separate owner-approved environment configuration
+        required: true
+        default: verify-only
+        type: choice
+        options: [verify-only, publish]
+      authorization:
+        description: For a future publication only, enter PUBLISH followed by the tag
+        required: false
+        type: string
 
 permissions:
   contents: read
 
-jobs:
-  publish:
-    name: Publish saxil-core 0.1.0 to PyPI
-    runs-on: ubuntu-latest
-    environment: pypi
-    permissions:
-      id-token: write
-      contents: read
-    steps:
-      - name: Verify ref is v0.1.0
-        run: |
-          set -euo pipefail
-          echo "github.ref=${GITHUB_REF}"
-          echo "github.ref_name=${GITHUB_REF_NAME}"
-          if [ "${GITHUB_REF}" != "refs/tags/v0.1.0" ] && [ "${GITHUB_REF_NAME}" != "v0.1.0" ]; then
-            echo "Refusing publish: only tag v0.1.0 is authorized for this workflow."
-            exit 1
-          fi
+concurrency:
+  group: pypi-${{ inputs.tag || 'v0.1.0' }}
+  cancel-in-progress: false
 
-      - name: Download GitHub Release assets
+jobs:
+  verify:
+    name: Verify approved release (no publishing credentials)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      actions: read
+    outputs:
+      artifact-id: ${{ steps.packages.outputs.artifact-id }}
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
+        with:
+          python-version: '3.13'
+      - name: Test verification failure paths
+        run: python -m unittest discover -s .github/publishing -p 'test_*.py' -v
+      - name: Verify existing artifacts without building or executing package code
         env:
           GH_TOKEN: ${{ github.token }}
-        run: |
-          set -euo pipefail
-          mkdir -p dist checksums
-          gh release download v0.1.0 --repo SayaOpenTech/saxil-core --dir checksums \
-            --pattern "SHA256SUMS"
-          gh release download v0.1.0 --repo SayaOpenTech/saxil-core --dir dist \
-            --pattern "saxil_core-0.1.0-py3-none-any.whl" \
-            --pattern "saxil_core-0.1.0.tar.gz"
-          ls -la dist checksums
-
-      - name: Verify SHA-256 before upload
-        run: |
-          set -euo pipefail
-          EXPECT_WHEEL=28c56cb52849bd6f4803d3e322ee7b93f2a1c1a48a4532aa41fca655347d3cf0
-          EXPECT_SDIST=22df4b8a4655571e80147010981cda646d369c1939b77dc30a26595c7d2860b2
-          ACT_WHEEL=$(sha256sum dist/saxil_core-0.1.0-py3-none-any.whl | awk '{print $1}')
-          ACT_SDIST=$(sha256sum dist/saxil_core-0.1.0.tar.gz | awk '{print $1}')
-          echo "wheel $ACT_WHEEL"
-          echo "sdist $ACT_SDIST"
-          test "$ACT_WHEEL" = "$EXPECT_WHEEL"
-          test "$ACT_SDIST" = "$EXPECT_SDIST"
-          # Cross-check against release SHA256SUMS (kept outside packages-dir)
-          (cd dist && sha256sum -c ../checksums/SHA256SUMS)
-          # Ensure only wheel+sdist will be uploaded
-          test "$(ls -1 dist | wc -l)" -eq 2
-
-      - name: Publish to PyPI
-        uses: pypa/gh-action-pypi-publish@release/v1
+          RELEASE_TAG: ${{ inputs.tag || 'v0.1.0' }}
+          RELEASE_MODE: ${{ inputs.mode || 'verify-only' }}
+          RELEASE_AUTHORIZATION: ${{ inputs.authorization }}
+        run: python .github/publishing/verify_release.py
+      - name: Preserve verified distributions for this run only
+        id: packages
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
-          packages-dir: dist
+          name: verified-distributions-${{ github.run_id }}-${{ github.run_attempt }}
+          path: dist/*
+          if-no-files-found: error
+          retention-days: 7
+      - name: Preserve verification evidence
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: publishing-evidence-${{ github.run_id }}-${{ github.run_attempt }}
+          path: publishing-evidence.json
+          if-no-files-found: error
+          retention-days: 90
+
+  publish:
+    name: Publish separately authorized future version
+    needs: verify
+    # Absent by default. Enabling this variable or protecting pypi requires owner approval.
+    if: >-
+      github.event_name == 'workflow_dispatch' &&
+      github.ref == 'refs/heads/main' &&
+      inputs.mode == 'publish' &&
+      inputs.tag != 'v0.1.0' &&
+      vars.PYPI_PUBLISH_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: pypi
+      url: https://pypi.org/project/saxil-core/
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - name: Retrieve only the immutable artifact ID from the verification job
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          artifact-ids: ${{ needs.verify.outputs.artifact-id }}
+          merge-multiple: true
+          path: dist
+      - name: Publish verified distributions with attestations
+        uses: pypa/gh-action-pypi-publish@7245906fb61fa33a13554f9d5fb856fe61758086 # v1.14.3
+        with:
+          packages-dir: dist/
+          attestations: true
+          skip-existing: false
+          verify-metadata: true
