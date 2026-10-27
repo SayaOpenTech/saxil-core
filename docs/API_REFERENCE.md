@@ -2,7 +2,7 @@
 
 ## Version
 
-- `SOFTWARE_VERSION` / `__version__` → `0.1.0-rc.1`
+- `SOFTWARE_VERSION` / `__version__` → `0.1.0`
 - `get_version_info() -> dict`
 - `CODEC_PROFILE` → `"W2-v1"`
 - `PROTOCOL_W2_VERSION` → `2`
