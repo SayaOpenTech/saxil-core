@@ -110,6 +110,9 @@ research adapters and training/inference stacks are not included in the SDK.
 
 ## Documentation
 
+Browse the [documentation website](https://sayaopentech.github.io/saxil-core/) or
+use the source pages below.
+
 | Start here | Reference |
 | --- | --- |
 | [Installation](docs/INSTALLATION.md) | [Python API](docs/API_REFERENCE.md) |
