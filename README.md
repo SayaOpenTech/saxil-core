@@ -118,6 +118,8 @@ use the source pages below.
 | [Installation](docs/INSTALLATION.md) | [Python API](docs/API_REFERENCE.md) |
 | [Quick start](docs/QUICKSTART.md) | [AST contract](docs/W2_AST_CONTRACT.md) |
 | [Three executable examples](examples/README.md) | [Encoder/decoder behavior](docs/ENCODER_DECODER_BEHAVIOR.md) |
+| [Python service integration](integrations/price_service/README.md) | [Public benchmarks](benchmarks/README.md) |
+| [Feedback and adoption evidence](docs/ADOPTION_METRICS.md) | [Security reporting](SECURITY.md) |
 | [Offline usage](docs/OFFLINE_USAGE_EXAMPLE.md) | [Version/profile compatibility](docs/VERSION_PROFILE_COMPATIBILITY.md) |
 | [Error handling](docs/ERROR_HANDLING.md) | [Frozen W2-v1 specification](docs/W2-v1-spec-1.0.md) |
 
