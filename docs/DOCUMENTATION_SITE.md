@@ -11,8 +11,11 @@ dependency. Documentation tooling is separate from `pyproject.toml`.
 
 The build copies an allowlist of public Markdown, specification JSON and example
 source into a temporary tree, preserving repository-relative links. It checks the
-frozen specification's approved SHA-256 before and after the build and copies it
-without changing source bytes. Existing normative source is never rewritten.
+frozen specification's approved SHA-256 using the canonical CRLF representation,
+matching the existing release verifier. The staging copy is byte-identical to the
+checkout, and source bytes are compared before/after the build. Git's LF checkout
+on Linux and CRLF checkout on Windows are not mistaken for specification changes.
+Existing normative source is never rewritten.
 
 ## Reproduce the build
 

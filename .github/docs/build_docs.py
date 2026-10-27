@@ -52,7 +52,10 @@ def verify_site(site):
 
 
 def main():
-    if hashlib.sha256(SPEC.read_bytes()).hexdigest() != EXPECTED:
+    original_spec = SPEC.read_bytes()
+    # The frozen manifest uses canonical CRLF, as does the release verifier.
+    canonical_spec = original_spec.replace(b"\r\n", b"\n").replace(b"\n", b"\r\n")
+    if hashlib.sha256(canonical_spec).hexdigest() != EXPECTED:
         raise RuntimeError("Frozen specification hash mismatch")
     site = ROOT / "site"
     with tempfile.TemporaryDirectory(prefix="saxil-public-docs-") as temp:
@@ -83,10 +86,10 @@ def main():
         subprocess.run([sys.executable, "-m", "mkdocs", "build", "--strict", "--config-file", str(config_file)], check=True)
     verify_site(site)
     commit = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip()
-    (site / "build-info.json").write_text(json.dumps({"source_commit": commit, "sdk_version": "0.1.0", "frozen_spec_sha256": EXPECTED}, indent=2) + "\n", encoding="utf-8")
+    (site / "build-info.json").write_text(json.dumps({"source_commit": commit, "sdk_version": "0.1.0", "frozen_spec_sha256": EXPECTED, "spec_hash_representation": "canonical CRLF", "source_spec_sha256": hashlib.sha256(original_spec).hexdigest()}, indent=2) + "\n", encoding="utf-8")
     environment = subprocess.check_output([sys.executable, "-m", "pip", "freeze"], text=True)
     (site / "build-environment.txt").write_text(environment, encoding="utf-8")
-    if hashlib.sha256(SPEC.read_bytes()).hexdigest() != EXPECTED:
+    if SPEC.read_bytes() != original_spec:
         raise RuntimeError("Build modified frozen source")
 
 
