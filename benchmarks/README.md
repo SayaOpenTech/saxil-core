@@ -56,6 +56,24 @@ JSON as an artifact. It has **no timing or compression-ratio pass threshold**.
 - This is a microbenchmark and a reproducible method, not an independent audit,
   performance SLA or statistically established superiority across workloads.
 
+## Recorded sample
+
+One Windows / CPython 3.13.14 run (1,000 iterations per record, five trials) gave:
+
+| Quantity | Recorded value |
+| --- | ---: |
+| Structured records | 8 |
+| Total W2 bytes | 124 |
+| Total compact JSON UTF-8 bytes | 1,136 |
+| W2 encode, median operations/s | 286,177 |
+| W2 decode, median operations/s | 123,170 |
+| JSON encode with AST projection, median operations/s | 63,203 |
+| JSON decode with AST construction, median operations/s | 137,545 |
+
+In this run, JSON-to-AST decoding was faster than W2 decoding. These numbers
+describe this corpus, machine and operation definitions only; they are not a
+general speed ranking. All individual trial durations are retained below.
+
 The [checked-in sample](results/windows-python3.13.json) records one local run;
 consult its raw trials and environment before interpreting it. Re-run on your own
 machine and keep the raw output. See [SDK limitations](../docs/KNOWN_LIMITATIONS.md).

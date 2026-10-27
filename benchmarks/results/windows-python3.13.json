@@ -1,0 +1,135 @@
+{
+  "schema": "saxil-public-benchmark-v1",
+  "sdk_version": "0.1.0",
+  "benchmark_source_commit": "65c120ee2b8101235b73cd3542134bc60bd9b462",
+  "script_sha256_lf": "c00a6477658bc09af43745a61fc6b019cd66210d0e6f65eeb68a9b4807b9e4b4",
+  "corpus_sha256_canonical_json": "5d2e07526b1c8779d8ac58c2f00797b02cb5ecf921583c24005b5d03879eb191",
+  "environment": {
+    "python": "3.13.14",
+    "implementation": "CPython",
+    "os": "Windows",
+    "machine": "AMD64",
+    "cpu": "Intel64 Family 6 Model 165 Stepping 5, GenuineIntel",
+    "logical_cpu_count": 20
+  },
+  "method": {
+    "iterations": 1000,
+    "trials": 5,
+    "warmup_corpus_passes": 3,
+    "clock": "perf_counter_ns",
+    "semantic_equivalence": "all dataclass fields equal for original, W2-decoded and JSON-decoded AST"
+  },
+  "sizes": [
+    {
+      "id": "query-minimal",
+      "ast_type": "SemanticFrame",
+      "w2_bytes": 11,
+      "compact_json_utf8_bytes": 88
+    },
+    {
+      "id": "query-action",
+      "ast_type": "SemanticFrame",
+      "w2_bytes": 13,
+      "compact_json_utf8_bytes": 105
+    },
+    {
+      "id": "product-1",
+      "ast_type": "SemanticFrame",
+      "w2_bytes": 19,
+      "compact_json_utf8_bytes": 153
+    },
+    {
+      "id": "product-127",
+      "ast_type": "SemanticFrame",
+      "w2_bytes": 19,
+      "compact_json_utf8_bytes": 155
+    },
+    {
+      "id": "product-128",
+      "ast_type": "SemanticFrame",
+      "w2_bytes": 19,
+      "compact_json_utf8_bytes": 160
+    },
+    {
+      "id": "reject-product",
+      "ast_type": "SemanticFrame",
+      "w2_bytes": 19,
+      "compact_json_utf8_bytes": 156
+    },
+    {
+      "id": "verbal-greeting",
+      "ast_type": "VerbalUtt",
+      "w2_bytes": 12,
+      "compact_json_utf8_bytes": 158
+    },
+    {
+      "id": "verbal-price",
+      "ast_type": "VerbalUtt",
+      "w2_bytes": 12,
+      "compact_json_utf8_bytes": 161
+    }
+  ],
+  "totals": {
+    "records": 8,
+    "w2_bytes": 124,
+    "compact_json_utf8_bytes": 1136
+  },
+  "timings": {
+    "w2_encode": {
+      "calls_per_trial": 8000,
+      "trial_duration_ns": [
+        27954700,
+        27756800,
+        28698000,
+        28211700,
+        27489800
+      ],
+      "median_ns_per_operation": 3494.3375,
+      "median_operations_per_second": 286177.27967032377
+    },
+    "w2_decode": {
+      "calls_per_trial": 8000,
+      "trial_duration_ns": [
+        64464700,
+        64106200,
+        65912800,
+        64950700,
+        72036600
+      ],
+      "median_ns_per_operation": 8118.8375,
+      "median_operations_per_second": 123170.34304480167
+    },
+    "json_encode_with_ast_projection": {
+      "calls_per_trial": 8000,
+      "trial_duration_ns": [
+        127424300,
+        127343200,
+        124765400,
+        123586900,
+        126576000
+      ],
+      "median_ns_per_operation": 15822.0,
+      "median_operations_per_second": 63203.13487548982
+    },
+    "json_decode_with_ast_construction": {
+      "calls_per_trial": 8000,
+      "trial_duration_ns": [
+        59784400,
+        57574000,
+        58162900,
+        57747500,
+        58632700
+      ],
+      "median_ns_per_operation": 7270.3625,
+      "median_operations_per_second": 137544.72352650916
+    }
+  },
+  "limitations": [
+    "Eight synthetic records are not representative of production workloads.",
+    "Compact JSON includes type/field names; W2 uses a closed schema/vocabulary.",
+    "No arbitrary-text, LLM-token/cost or end-to-end voice performance claim.",
+    "Microbenchmark excludes network, model inference and application processing.",
+    "Validation work differs between codecs; timing is specific to the documented operations.",
+    "CPU load, Python and hardware affect timing; CI has no performance threshold."
+  ]
+}
