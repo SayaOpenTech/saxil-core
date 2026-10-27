@@ -1,0 +1,15 @@
+{
+  "schema": "saxil-public-synthetic-corpus-v1",
+  "license": "Apache-2.0",
+  "provenance": "Synthetic AST records authored for this public repository; no user conversations, private gold data or third-party dataset.",
+  "records": [
+    {"id":"query-minimal","payload":{"type":"semantic","speaker":"user","act":"ask","intent":"query_price","polarity":"pos"}},
+    {"id":"query-action","payload":{"type":"semantic","speaker":"user","act":"ask","intent":"query_price","polarity":"pos","action":"query"}},
+    {"id":"product-1","payload":{"type":"semantic","speaker":"user","act":"ask","intent":"query_price","polarity":"pos","action":"query","object":{"eid":1,"typ":"product","ref":"this"}}},
+    {"id":"product-127","payload":{"type":"semantic","speaker":"user","act":"ask","intent":"query_price","polarity":"pos","action":"query","object":{"eid":127,"typ":"product","ref":"that"}}},
+    {"id":"product-128","payload":{"type":"semantic","speaker":"agent","act":"assert","intent":"state_price","polarity":"pos","action":"state","object":{"eid":128,"typ":"product","ref":"other"}}},
+    {"id":"reject-product","payload":{"type":"semantic","speaker":"user","act":"reject","intent":"reject","polarity":"neg","action":"reject","object":{"eid":2,"typ":"product","ref":"previous"}}},
+    {"id":"verbal-greeting","payload":{"type":"verbal","utt_type":"statement","units":[{"op":"LEX","w":"سلام"},{"op":"LEX","w":"وقت"},{"op":"LEX","w":"شما"},{"op":"LEX","w":"بخیر"}]}},
+    {"id":"verbal-price","payload":{"type":"verbal","utt_type":"question","units":[{"op":"LEX","w":"قیمت"},{"op":"LEX","w":"این"},{"op":"LEX","w":"محصول"},{"op":"LEX","w":"چنده"}]}}
+  ]
+}
