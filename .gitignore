@@ -6,3 +6,4 @@ dist/
 build/
 *.egg-info/
 site/
+benchmark-results.json

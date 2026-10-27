@@ -26,6 +26,7 @@ nav:
       - Python API: docs/API_REFERENCE.md
       - Error handling: docs/ERROR_HANDLING.md
   - Examples: examples/README.md
+  - Benchmarks: benchmarks/README.md
   - Specification: docs/W2-v1-spec-1.0.md
   - Project:
       - Security: SECURITY.md
