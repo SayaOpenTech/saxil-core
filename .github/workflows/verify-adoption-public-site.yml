@@ -1,0 +1,48 @@
+name: Verify ADOPT public site (2026-10-27)
+
+on:
+  push:
+    branches: [verify/adoption-public-site-20261027]
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  public-readback:
+    name: Read public HTTPS pages and deployed revision
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Verify public site without checkout, credentials or deployment
+        shell: python {0}
+        run: |
+          import json
+          import time
+          from urllib.request import urlopen
+
+          base = "https://sayaopentech.github.io/saxil-core/"
+          expected = "218c98e6017a4816045fc4a65ed847a62945ad57"
+          last = None
+          for attempt in range(3):
+              try:
+                  with urlopen(base + "build-info.json?verify=" + expected, timeout=10) as response:
+                      info = json.load(response)
+                  assert info["source_commit"] == expected, info
+                  assert info["sdk_version"] == "0.1.0", info
+                  assert info["frozen_spec_sha256"] == "146ef2bd17474ba405caf2d56f726e38344e14e717b32843e666bdc021e66bad", info
+                  print("Verified deployed source commit and frozen specification:", info)
+                  for path, text in [("", "integrations/price_service/"), ("integrations/price_service/", "Python quote-service integration")]:
+                      with urlopen(base + path + "?verify=" + expected, timeout=10) as response:
+                          html = response.read().decode("utf-8")
+                          assert response.status == 200
+                      assert text in html, (path, "expected content missing")
+                      print("HTTP 200 and expected public content:", base + path)
+                  print("PASS: public HTTPS site serves the final reviewed revision")
+                  break
+              except Exception as exc:
+                  last = exc
+                  print("Read-back attempt", attempt + 1, "failed:", exc)
+                  if attempt < 2:
+                      time.sleep(2)
+          else:
+              raise RuntimeError("Public site read-back failed") from last
