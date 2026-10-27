@@ -1,59 +1,44 @@
-# saxil-core (0.1.0) — SAXIL Core
+# SAXIL Core
 
-Public SAXIL **W2** codec SDK under the **Apache License, Version 2.0**.
+**Encode structured semantic and verbal messages as deterministic W2 binary
+packets, then decode and validate them in Python.**
 
-**SAXIL** = **Semantic Agent eXchange Intermediate Language**
+[![Public CI](https://github.com/SayaOpenTech/saxil-core/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/SayaOpenTech/saxil-core/actions/workflows/ci.yml)
 
-**Human label:** `SAXIL Core 0.1.0`  
-**Distribution status:** `PUBLIC`  
-**License:** Apache-2.0 (see `LICENSE`)  
-**Copyright:** 2026 Pedram Niloofari
+SAXIL means **Semantic Agent eXchange Intermediate Language**. The public
+`saxil-core` package is a Python SDK and CLI with no mandatory third-party runtime
+dependencies. The published version is **0.1.0**, using the frozen **W2-v1** profile.
 
-Created by Pedram Niloofari. Part of the Saya AI ecosystem.  
-Digital Bam is a commercial brand-use licensee candidate only where separately licensed; Digital Bam is **not** the creator of SAXIL.  
-Apache-2.0 does **not** grant trademark rights in Saya/SAXIL names or logos.
+## When to use it
 
-## What is SAXIL Core?
+Use SAXIL Core when your application already has structured dialogue data and
+needs a shared, deterministic wire representation:
 
-A stdlib-only Python library that encodes and decodes **SAXIL W2** semantic and verbal messages (`byte0 == 2`) using a frozen AST and closed vocabulary tables.
+- Exchange supported intent/action/entity frames between services or agent components.
+- Encode supported verbal unit sequences using `VerbalUtt`.
+- Decode and validate W2 packets at an application boundary.
+- Check canonical byte roundtrips and inspect packets through the CLI.
 
-## What does W2 encode?
+Your application supplies the structured data. SAXIL Core does not extract intent
+from free text, run a language model, or provide a network transport.
 
-Structured dialogue frames (`SemanticFrame`) and verbal unit sequences (`VerbalUtt`) — **not** arbitrary free-text Persian, and **not** a universal LLM tokenizer.
+## Install the released SDK
 
-## Guarantees (W2-v1)
+Requires **Python 3.10 or later**. In a virtual environment:
 
-- Canonical encode/decode for supported AST values
-- Fail-closed rejection of unsupported versions, unknown msg types, and malformed packets
-- Deterministic wire bytes for the same AST under `W2-v1`
-
-## Unsupported / out of scope
-
-| Topic | Status |
-|---|---|
-| Free-text Persian auto-reversible compression | **No** — not lossless text ↔ W2 |
-| S0.1 / V0.1 semantic readable forms | Deferred (not stable Core API) |
-| `SAXIL_NATIVE_R2` | Frozen research; **not** exposed |
-| Universal LLM token savings | **Not claimed** |
-| Voice Agent E2E acceleration | **Not claimed** |
-| AST `modality` / `uncertainty` on wire | Documented limitation (not emitted) |
-
-## Install
-
-```powershell
+```sh
 python -m pip install saxil-core==0.1.0
+python -m saxil_core version
 ```
 
-Offline / from a local wheel:
+See the [installation guide](docs/INSTALLATION.md) for environment setup and
+offline installation. Installation can require network access; W2 encoding and
+decoding run locally without a model or online service.
 
-```powershell
-python -m pip install --no-index --find-links=<path-to-dist> saxil-core==0.1.0
-```
-
-## Quick start
+## Try a canonical roundtrip
 
 ```python
-from saxil_core import SemanticFrame, encode, decode, validate, get_version_info
+from saxil_core import SemanticFrame, decode, encode, validate
 
 frame = SemanticFrame(
     speaker="user",
@@ -62,47 +47,93 @@ frame = SemanticFrame(
     polarity="pos",
     action="query",
 )
-payload = encode(frame)          # bytes, wire version byte == 2
-again = decode(payload)          # SemanticFrame
-assert encode(again) == payload  # canonical round-trip
+
+payload = encode(frame)          # bytes in the W2-v1 profile
+restored = decode(payload)       # SemanticFrame
+assert encode(restored) == payload
+
+print(payload.hex())
 print(validate(payload))
-print(get_version_info())
 ```
 
-## CLI
+The assertion checks canonical wire bytes. Supported values come from a closed
+vocabulary; arbitrary strings are not automatically valid AST values. See the
+[AST contract](docs/W2_AST_CONTRACT.md) and [encoder/decoder behavior](docs/ENCODER_DECODER_BEHAVIOR.md).
 
-```powershell
-saxil --help
-saxil version
-saxil encode --hex -i frame.json
-saxil decode --hex -i payload.hex --pretty
-saxil validate --hex -i payload.hex
+## Use the CLI
+
+Save this as `frame.json` in UTF-8:
+
+```json
+{
+  "type": "semantic",
+  "speaker": "user",
+  "act": "ask",
+  "intent": "query_price",
+  "polarity": "pos",
+  "action": "query"
+}
 ```
 
-## Profiles
+Then run:
 
-| Profile | In Core 0.1.0? |
-|---|---|
-| `W2-v1` | **Yes** (default) |
-| `S0.1` / `V0.1` | Deferred (`saxil_core.sv` raises) |
-| `SAXIL_NATIVE_R2` | Deferred (frozen; not modified) |
+```sh
+python -m saxil_core encode --hex -i frame.json -o frame.hex
+python -m saxil_core decode --hex -i frame.hex --pretty
+python -m saxil_core validate --hex -i frame.hex
+```
 
-Unsupported profile names raise `SaxilUnsupportedProfileError`.
+The installed `saxil` command exposes the same interface.
+Use `python -m saxil_core --help` for command help. Handle SDK errors and CLI exit
+codes as described in [error handling](docs/ERROR_HANDLING.md).
 
-## Docs
+## Boundaries and limitations
 
-See `docs/` in this package directory. W2 normative specification: `W2-v1-spec-1.0` (owner-approved).
+- W2 represents supported `SemanticFrame` and `VerbalUtt` data. It is not a
+  lossless compressor for arbitrary Persian text or a general replacement for an
+  LLM tokenizer.
+- No universal token/cost savings or end-to-end voice-agent speedup is claimed.
+- W2-v1 has a frozen AST/vocabulary contract. In particular, AST `modality` and
+  `uncertainty` fields are not emitted on the wire; a canonical byte roundtrip
+  does not promise preservation of every Python AST field.
+- `S0.1`, `V0.1`, and `SAXIL_NATIVE_R2` are not supported public Core profiles.
+  Unsupported profile names raise `SaxilUnsupportedProfileError`.
+- Malformed packets, unsupported versions and invalid values are rejected;
+  applications still need to handle errors and their own input/trust boundaries.
+- [Public CI](https://github.com/SayaOpenTech/saxil-core/actions/workflows/ci.yml)
+  exercises the public SDK on Linux and Windows with Python 3.10–3.13. The
+  declared minimum Python version is not a claim that every newer version or
+  other operating system has been verified, and there is no support SLA.
 
-## Tested vs declared
+See [known limitations](docs/KNOWN_LIMITATIONS.md) for more detail. Model weights,
+research adapters and training/inference stacks are not included in the SDK.
 
-| Claim | Status |
-|---|---|
-| Declared `requires-python` | `>=3.10` |
-| Classifiers | 3.10–3.13 |
-| **Tested** Windows 11 + Python 3.13 | Yes (private RC + public isolation) |
-| **Tested** WSL Ubuntu + Python 3.12 | Yes (private RC SDK suite) |
-| Linux / macOS beyond above | **NOT_VERIFIED** as support SLA |
+## Documentation
 
-## Contributing
+| Start here | Reference |
+| --- | --- |
+| [Installation](docs/INSTALLATION.md) | [Python API](docs/API_REFERENCE.md) |
+| [Quick start](docs/QUICKSTART.md) | [AST contract](docs/W2_AST_CONTRACT.md) |
+| [Offline usage](docs/OFFLINE_USAGE_EXAMPLE.md) | [Version/profile compatibility](docs/VERSION_PROFILE_COMPATIBILITY.md) |
+| [Error handling](docs/ERROR_HANDLING.md) | [Frozen W2-v1 specification](docs/W2-v1-spec-1.0.md) |
 
-See `CONTRIBUTING.md` (DCO required). Contributors retain copyright.
+[Release 0.1.0](https://github.com/SayaOpenTech/saxil-core/releases/tag/v0.1.0)
+and [PyPI 0.1.0](https://pypi.org/project/saxil-core/0.1.0/) contain the published
+distributions. See the [changelog](CHANGELOG.md) for release information.
+
+## Contribute or report a problem
+
+For reproducible bugs or usage questions, use the
+[public issue tracker](https://github.com/SayaOpenTech/saxil-core/issues).
+For suspected vulnerabilities, follow [SECURITY.md](SECURITY.md) and use the
+private reporting channel; keep vulnerability details out of public issues.
+
+Contributions follow [CONTRIBUTING.md](CONTRIBUTING.md) and require a
+[DCO sign-off](DCO.txt). Contributors retain copyright in their contributions.
+
+## License and attribution
+
+Created by **Pedram Niloofari**, part of the Saya AI ecosystem.
+Copyright 2026 Pedram Niloofari. Code is licensed under [Apache-2.0](LICENSE);
+see [NOTICE](NOTICE). Trademark rights in Saya/SAXIL names and logos are separate
+and are not granted by the code license.
