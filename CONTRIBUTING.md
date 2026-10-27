@@ -28,4 +28,6 @@ Apache-2.0 does not grant Saya/SAXIL trademark rights. Descriptive references ar
 
 ## Code of conduct / security
 
-Security disclosure process and community support posture: best-effort, no SLA unless a separate commercial contract exists.
+For suspected vulnerabilities, follow [SECURITY.md](SECURITY.md). Do not disclose
+vulnerability details in public issues or pull requests. Security reporting and
+community support are best-effort, with no response or remediation SLA.

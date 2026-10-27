@@ -1,0 +1,20 @@
+version: 2
+updates:
+  # Keep reviewed commit pins in GitHub Actions current through ordinary PRs.
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "ci(deps)"
+
+  # Public build/dev tooling in pyproject.toml; runtime dependencies are empty.
+  # Also tracks requirements-security.txt. No private registries or credentials.
+  - package-ecosystem: pip
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "chore(deps)"

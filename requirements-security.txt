@@ -1,0 +1,2 @@
+# CI/developer tooling only; not an SDK runtime or packaging dependency.
+bandit==1.9.4
