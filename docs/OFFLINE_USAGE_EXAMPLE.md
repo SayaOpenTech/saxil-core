@@ -1,18 +1,32 @@
-# Offline Usage Example
+# Offline usage example
 
-No network calls are made by the codec or CLI.
+After obtaining and verifying the published 0.1.0 wheel, put it in a local
+`wheels` directory and install without contacting an index:
 
-```powershell
-# After local wheel install (no index):
-python -m pip install --no-index --find-links=<path-to-dist> saxil-core
-
-python - <<'PY'
-from saxil_core import SemanticFrame, encode, decode, validate
-fr = SemanticFrame(speaker="user", act="ask", intent="query_price", polarity="pos", action="query")
-b = encode(fr)
-assert decode(b).intent == "query_price"
-print(validate(b))
-PY
-
-saxil version
+```sh
+python -m pip install --no-index --find-links=wheels saxil-core==0.1.0
 ```
+
+Save this as `offline_roundtrip.py`:
+
+```python
+from saxil_core import SemanticFrame, decode, encode, validate
+
+frame = SemanticFrame(speaker="user", act="ask", intent="query_price", polarity="pos", action="query")
+packet = encode(frame)
+assert decode(packet).intent == "query_price"
+assert encode(decode(packet)) == packet
+print(validate(packet))
+```
+
+Run it using the installed SDK:
+
+```sh
+python offline_roundtrip.py
+python -m saxil_core version
+```
+
+The codec and CLI make no network calls. Obtaining the wheel initially requires
+an online source or an existing verified copy; the separate two-service example
+uses loopback HTTP by design. See [installation](INSTALLATION.md) and the
+[example runner](../examples/README.md).

@@ -1,0 +1,46 @@
+site_name: SAXIL Core
+site_description: Structured semantic and verbal messages with the public W2 Python SDK
+site_url: https://sayaopentech.github.io/saxil-core/
+repo_url: https://github.com/SayaOpenTech/saxil-core
+repo_name: SayaOpenTech/saxil-core
+copyright: Copyright 2026 Pedram Niloofari. Code Apache-2.0; trademark rights reserved.
+theme:
+  name: mkdocs
+  highlightjs: true
+extra_css:
+  - assets/extra.css
+nav:
+  - Home: index.md
+  - Getting started:
+      - Installation: docs/INSTALLATION.md
+      - Quick start: docs/QUICKSTART.md
+      - Offline usage: docs/OFFLINE_USAGE_EXAMPLE.md
+  - Concepts:
+      - W2 and application boundaries: docs/CONCEPTS.md
+      - AST contract: docs/W2_AST_CONTRACT.md
+      - Encoder and decoder: docs/ENCODER_DECODER_BEHAVIOR.md
+      - Limitations: docs/KNOWN_LIMITATIONS.md
+      - Compatibility: docs/VERSION_PROFILE_COMPATIBILITY.md
+  - API:
+      - Python API: docs/API_REFERENCE.md
+      - Error handling: docs/ERROR_HANDLING.md
+  - Examples: examples/README.md
+  - Specification: docs/W2-v1-spec-1.0.md
+  - Project:
+      - Security: SECURITY.md
+      - Contributing: CONTRIBUTING.md
+      - Changelog: CHANGELOG.md
+      - Documentation maintenance: docs/DOCUMENTATION_SITE.md
+markdown_extensions:
+  - tables
+  - fenced_code
+  - admonition
+  - toc:
+      permalink: true
+validation:
+  nav:
+    omitted_files: info
+  links:
+    not_found: warn
+    anchors: warn
+    unrecognized_links: warn

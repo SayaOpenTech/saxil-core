@@ -1,0 +1,9 @@
+:root { --saxil-ink: #163047; --saxil-accent: #087f8c; }
+body { color: var(--saxil-ink); line-height: 1.65; }
+.navbar { background: #163047 !important; border-bottom: 3px solid #10a3a3; }
+a { color: var(--saxil-accent); }
+h1, h2, h3 { color: #163047; letter-spacing: -.02em; }
+pre { padding: 1rem; border: 1px solid #dce6eb; border-radius: .4rem; }
+table { font-size: .95rem; }
+footer { font-size: .85rem; }
+@media (max-width: 768px) { h1 { font-size: 1.8rem; } }
