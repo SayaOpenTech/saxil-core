@@ -114,6 +114,7 @@ research adapters and training/inference stacks are not included in the SDK.
 | --- | --- |
 | [Installation](docs/INSTALLATION.md) | [Python API](docs/API_REFERENCE.md) |
 | [Quick start](docs/QUICKSTART.md) | [AST contract](docs/W2_AST_CONTRACT.md) |
+| [Three executable examples](examples/README.md) | [Encoder/decoder behavior](docs/ENCODER_DECODER_BEHAVIOR.md) |
 | [Offline usage](docs/OFFLINE_USAGE_EXAMPLE.md) | [Version/profile compatibility](docs/VERSION_PROFILE_COMPATIBILITY.md) |
 | [Error handling](docs/ERROR_HANDLING.md) | [Frozen W2-v1 specification](docs/W2-v1-spec-1.0.md) |
 
