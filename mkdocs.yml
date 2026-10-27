@@ -3,6 +3,7 @@ site_description: Structured semantic and verbal messages with the public W2 Pyt
 site_url: https://sayaopentech.github.io/saxil-core/
 repo_url: https://github.com/SayaOpenTech/saxil-core
 repo_name: SayaOpenTech/saxil-core
+edit_uri: ''
 copyright: Copyright 2026 Pedram Niloofari. Code Apache-2.0; trademark rights reserved.
 theme:
   name: mkdocs
