@@ -1,8 +1,9 @@
 # ADOPT-04: repository security assessment
 
 Scope: security policy, dependency-update configuration, and optional static
-analysis for the public repository only. This proposal does not change repository
-settings, the W2 specification, SDK/API behavior, versions, or published artifacts.
+analysis for the public repository only. Source changes preserve the W2
+specification, SDK/API behavior, versions, and published artifacts. Owner-approved
+repository settings applied during completion are recorded separately below.
 
 ## Live baseline (2026-10-27 UTC)
 
@@ -57,31 +58,38 @@ Bandit is selected as a small initial Python check that needs no administrative
 change. **CodeQL is deferred**: it offers deeper analysis of Python and Actions,
 but requires a separate decision about setup type, analysis scope and result-upload
 permissions. Do not silently enable default setup or add competing workflows.
-**Secret scanning and push protection are recommended for separate owner review**;
+**Secret scanning and push protection were enabled with owner approval**;
 Bandit does not replace them. Dependency auditing (for example, pip-audit) is also
 deferred: this project has no runtime dependencies, and an audit of resolved
 build/dev tooling needs a clearly defined environment and triage policy.
 
-## Outstanding owner decisions and verification
+## Owner-approved completion (2026-10-27)
 
-Issue #4 requires an owner-approved reporting channel. None was confirmed by the
-issue (no comments) or the inspected policy/contributing files; PVR was disabled.
-**This prerequisite remains unresolved.** The proposed policy therefore describes
-only a conditional private form and a public request for a private channel with
-no vulnerability details. Keep the PR draft until the owner confirms the channel
-and reviews the wording. Do not mark Issue #4 complete solely because a PR exists.
+After reviewing the remaining-work proposal, the owner authorized the reporting
+channel, security settings, policy finalization, PR merge and post-merge checks.
+The approved private channel is GitHub PVR for this repository. No email address,
+SLA, new release or package publication was authorized or introduced.
 
-Recommended next administrative decision: approve and enable PVR, or provide an
-explicitly approved alternative private channel. After any separately authorized
-PVR change, read back `enabled: true`, verify that the private reporting form is
-available, and update the policy's current-channel wording through review. Do not
-submit a fake vulnerability report as a test. There is no enablement in this PR.
+Read-back after the authorized administrative changes confirmed:
 
-Separately consider enabling Dependabot **security updates**, secret scanning and
-push protection. Dependabot alerts are already enabled. The version-update config
-does not itself enable security updates. After merge, inspect Dependabot update
-jobs/PRs and scheduled Bandit runs; their operation cannot be proved from an
-unmerged branch. New checks are not made required in branch rules by this PR.
+- PVR: `enabled: true`.
+- Dependabot security updates: `enabled: true`, `paused: false`.
+- Secret scanning: `status: enabled`.
+- Secret scanning push protection: `status: enabled`.
+
+The public [advisories page](https://github.com/SayaOpenTech/saxil-core/security/advisories)
+also displayed **Report a vulnerability** after enablement. No report was submitted.
+
+Only these controls were enabled. Non-provider secret patterns, validity checks,
+CodeQL configuration, main rulesets, Actions permissions and publishing settings
+were not changed. No fake report or credential was submitted as a test.
+`SECURITY.md` now identifies PVR as the active, approved reporting channel.
+
+Dependabot alerts were already enabled. The version-update config does not itself
+enable security updates; enablement was performed separately and read back.
+After merge, inspect default-branch CI, Bandit and Dependabot update jobs/PRs.
+A successful manual/push run is not proof of a later scheduled run. New checks
+are not made required in branch rules by this PR.
 
 To reproduce the proposed source scan in an isolated environment:
 
@@ -92,8 +100,26 @@ python -m bandit -r src --severity-level medium --confidence-level medium
 
 Review the PR's Actions results for the exact tested commit. A local package
 download timed out during preparation; that failed installation is not a passing
-scan. Never rebuild or publish 0.1.0 to validate this change. Roll back source
-changes through a new reviewed PR; this proposal has no settings to roll back.
+scan. The initial PR run successfully scanned 1,999 lines: zero medium/high
+severity findings, two low-severity findings outside the gate, no skipped files
+and no `nosec` suppressions. All eight public CI matrix jobs passed.
+Never rebuild or publish 0.1.0 to validate this change.
+
+## Evidence and rollback
+
+The initial baseline table above is historical, before the authorized settings
+changes. Local baseline exports and final read-backs are retained outside the
+repository in `E:\SayaOpenTechPublic\ADOPT-04-evidence-20261027-completion`.
+The PR and Issue #4 record final run links and merge evidence.
+
+Roll back source changes through a reviewed PR. If the owner requests settings
+rollback, the exported baseline has PVR, Dependabot security updates, secret
+scanning and push protection disabled. Restore only the relevant setting:
+`DELETE .../private-vulnerability-reporting`,
+`DELETE .../automated-security-fixes`, or a repository PATCH setting the relevant
+`security_and_analysis` statuses to `disabled`. Read back each restored control.
+Do not change existing Dependabot alerts, main rulesets, release artifacts,
+publishing controls or unrelated security settings during rollback.
 
 ## Primary references
 

@@ -19,11 +19,11 @@ immutable; any remediation requiring a new release needs separate authorization.
 **Do not put vulnerability details, exploit code, secrets, or sensitive data in a
 public issue, pull request, discussion, or workflow log.**
 
-No private reporting channel is currently confirmed in this policy. GitHub
-Private Vulnerability Reporting was disabled when this policy was prepared.
+The owner-approved reporting channel is **GitHub Private Vulnerability Reporting**
+for this repository. It was enabled and verified on 2026-10-27.
 
 1. Check the repository's [security advisories page](https://github.com/SayaOpenTech/saxil-core/security/advisories).
-   If maintainers have enabled **Report a vulnerability**, use that private form.
+   Select **Report a vulnerability** and use that private form.
 2. If the private form is unavailable, open a [public issue](https://github.com/SayaOpenTech/saxil-core/issues/new)
    containing only a request such as: "Please provide a private channel for a
    security report." Do not include the affected component, reproduction steps,
@@ -31,12 +31,12 @@ Private Vulnerability Reporting was disabled when this policy was prepared.
    confirm a private channel before sharing them.
 
 No security email address or alternative private contact is designated here.
-Maintainers must confirm a private reporting channel before this policy can
-advertise it as available. The public request above is not a vulnerability report.
+The public request above is only a fallback to request a private channel if the
+form becomes unavailable; it is not a vulnerability report.
 
 ## Information to provide privately
 
-Once a private channel is confirmed, include:
+In the private reporting form, include:
 
 - Affected package version or commit, Python version, and operating system.
 - Expected and observed behavior, impact, and relevant trust boundaries.
