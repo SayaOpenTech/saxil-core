@@ -61,7 +61,7 @@ def main():
     with tempfile.TemporaryDirectory(prefix="saxil-public-docs-") as temp:
         stage = Path(temp) / "docs"
         stage.mkdir()
-        for name in ["README.md", "SECURITY.md", "CONTRIBUTING.md", "CHANGELOG.md", "LICENSE", "NOTICE", "DCO.txt"]:
+        for name in ["SECURITY.md", "CONTRIBUTING.md", "CHANGELOG.md", "LICENSE", "NOTICE", "DCO.txt"]:
             shutil.copyfile(ROOT / name, stage / name)
         shutil.copyfile(ROOT / "README.md", stage / "index.md")
         for folder in ["docs", "examples", "benchmarks", "integrations"]:
@@ -77,6 +77,10 @@ def main():
                     shutil.copyfile(path, target)
         if (stage / "docs/W2-v1-spec-1.0.md").read_bytes() != SPEC.read_bytes():
             raise RuntimeError("Frozen specification copy changed")
+        # MkDocs treats README and index as competing homepages. Map only this
+        # non-normative staged backlink; keep repository Markdown unchanged.
+        installation = stage / "docs/INSTALLATION.md"
+        installation.write_text(installation.read_text(encoding="utf-8").replace("../README.md#", "../index.md#"), encoding="utf-8")
         (stage / "assets").mkdir()
         shutil.copyfile(ROOT / ".github/docs/extra.css", stage / "assets/extra.css")
         config = yaml.safe_load((ROOT / "mkdocs.yml").read_text(encoding="utf-8"))

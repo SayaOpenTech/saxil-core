@@ -10,7 +10,9 @@ SDK import or research dependencies. The built-in theme avoids a separate theme
 dependency. Documentation tooling is separate from `pyproject.toml`.
 
 The build copies an allowlist of public Markdown, specification JSON and example
-source into a temporary tree, preserving repository-relative links. It checks the
+source into a temporary tree. README becomes the site's index; the installation
+page's README backlink is mapped to that index only in the staging copy. Other
+repository-relative links are preserved. It checks the
 frozen specification's approved SHA-256 using the canonical CRLF representation,
 matching the existing release verifier. The staging copy is byte-identical to the
 checkout, and source bytes are compared before/after the build. Git's LF checkout
