@@ -31,6 +31,7 @@ nav:
   - Project:
       - Security: SECURITY.md
       - Contributing: CONTRIBUTING.md
+      - Feedback and adoption evidence: docs/ADOPTION_METRICS.md
       - Changelog: CHANGELOG.md
       - Documentation maintenance: docs/DOCUMENTATION_SITE.md
 markdown_extensions:

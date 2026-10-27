@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Private vulnerability report
+    url: https://github.com/SayaOpenTech/saxil-core/security/advisories
+    about: Use Report a vulnerability for security details; see SECURITY.md.
+  - name: Documentation and executable examples
+    url: https://sayaopentech.github.io/saxil-core/
+    about: Start with installation, supported use cases and limitations.

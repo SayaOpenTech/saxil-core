@@ -1,0 +1,24 @@
+name: Usage question
+description: Ask about installation, supported AST values, CLI or examples.
+title: '[Question]: '
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Start with the [docs](https://sayaopentech.github.io/saxil-core/) and [examples](https://github.com/SayaOpenTech/saxil-core/tree/main/examples). Security details belong in the private reporting channel, not here.
+  - type: textarea
+    id: goal
+    attributes:
+      label: What are you trying to do?
+      description: Describe your structured-message use case; avoid confidential application data.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: SDK/Python version and operating system
+  - type: textarea
+    id: attempted
+    attributes:
+      label: What have you tried?
+      description: Link the relevant docs/example and include a small synthetic snippet if useful.
