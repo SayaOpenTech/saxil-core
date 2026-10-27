@@ -1,0 +1,26 @@
+name: Use case or feature proposal
+description: Describe a concrete public SDK or developer-experience need.
+title: '[Proposal]: '
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The current release is 0.1.0 and W2-v1 is frozen. A proposal does not authorize a protocol/API change or new release. Please describe the application need and current limitations first.
+  - type: textarea
+    id: use_case
+    attributes:
+      label: Use case and current obstacle
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior and alternatives
+      description: Explain whether this could be docs, an example or an application adapter.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Public evidence or reproduction
+      description: Optional links or synthetic examples; no private research data.

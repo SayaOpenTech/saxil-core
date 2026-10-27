@@ -18,7 +18,22 @@ Signed-off-by: Full Name <email@example.com>
 
 See [DCO.txt](DCO.txt) in this repository.
 
-## Maintainer approval
+## Start with a reproducible public issue
+
+Use the bug, usage-question or proposal forms in the
+[issue tracker](https://github.com/SayaOpenTech/saxil-core/issues). Include the
+SDK version/install source and a small synthetic reproduction. The current
+public release is `saxil-core==0.1.0`; a source checkout may differ from it.
+
+Keep PRs focused on a concrete problem and describe the validation you actually
+performed. Use `python -m pytest tests -q` for source changes; examples should also
+run against the released wheel as described in [examples/README.md](examples/README.md).
+No model weights or research dependencies are needed for public examples.
+
+See [feedback and adoption evidence](docs/ADOPTION_METRICS.md) for channels,
+triage expectations, aggregate indicators and privacy limits.
+
+## Merge authority
 
 Only officially designated maintainers may merge to the official repository. Forks are free under Apache-2.0; they must not claim to be the official SAXIL product without separate permission.
 
