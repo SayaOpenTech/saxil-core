@@ -3,10 +3,10 @@ name: Released SDK examples
 on:
   pull_request:
     branches: [main]
-    paths: ['examples/**', '.github/workflows/examples.yml']
+    paths: ['examples/**', 'integrations/**', '.github/workflows/examples.yml']
   push:
     branches: [main]
-    paths: ['examples/**', '.github/workflows/examples.yml']
+    paths: ['examples/**', 'integrations/**', '.github/workflows/examples.yml']
   workflow_dispatch:
 
 permissions:
@@ -34,3 +34,5 @@ jobs:
           python -m pip install --only-binary=:all: saxil-core==0.1.0
       - name: Run all three examples
         run: python -I examples/run_examples.py
+      - name: Run quote-service integration and boundary checks
+        run: python -I integrations/price_service/run_demo.py
