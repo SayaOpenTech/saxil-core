@@ -7,8 +7,14 @@ import subprocess
 import sys
 import tarfile
 
+import pytest
+
 
 EXPERIMENT = Path(__file__).resolve().parents[1] / "experiments/reference-runtime"
+pytestmark = pytest.mark.skipif(
+    not EXPERIMENT.is_dir(),
+    reason="Optional research fixtures are excluded from public SDK distributions",
+)
 
 
 def _run(arguments, cwd, *, source=None):
