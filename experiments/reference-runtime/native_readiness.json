@@ -1,0 +1,43 @@
+{
+  "date": "2026-10-29",
+  "original_checkpoint_inference_replayed": false,
+  "runner_startup": {
+    "status": "RECOVERED",
+    "official_probe": "RUN-20261029-0008",
+    "result_schema": "VALID",
+    "prompt_stop_reason": "end_turn"
+  },
+  "asset_identity": {
+    "files_hashed": 42,
+    "all_files_hashed": true,
+    "historical_identity_proved": false,
+    "data": {
+      "value_dev": {
+        "status": "COUNTS_AND_IDS_VALID",
+        "rows": 450,
+        "expected_rows": 450
+      },
+      "entity_test": {
+        "status": "COUNTS_AND_IDS_VALID",
+        "rows": 208,
+        "expected_rows": 208
+      }
+    }
+  },
+  "linux_environment": {
+    "distribution": "Ubuntu-24.04",
+    "python": "3.12.3",
+    "torch": "2.6.0+cu124",
+    "transformers": "5.14.1",
+    "peft": "0.20.0",
+    "bitsandbytes": "0.50.0",
+    "flash-linear-attention": "0.2.2",
+    "causal-conv1d": "1.6.2.post1+cu.12.4.torch.2.6"
+  },
+  "pending": [
+    "Register and authorize a dedicated bounded replay launcher",
+    "Replay original checkpoints without modifying historical data",
+    "Compare raw predictions against archived evidence"
+  ],
+  "no_model_weights_included": true
+}

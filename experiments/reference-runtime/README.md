@@ -63,9 +63,11 @@ the archived results to rerun in place; use a separately versioned study.
 
 ## Release status
 
-Historical 4B checkpoint replay remains blocked by Runner agent startup and a
-missing appropriate governed replay launcher. This hosted 9B study is not that
-replication. The earlier SRL claims remain historical evidence with caveats.
+Historical 4B checkpoint inference has not been replayed. Runner startup has
+now recovered in official probe RUN-20261029-0008, and the original Linux
+environment is available. A dedicated governed replay launcher and its actual
+execution are still pending. This hosted 9B study is not that replication.
+See [current native readiness](native_readiness.json).
 
 This candidate rejects stale, undefined, wrong-role and wrong-type references,
 but it cannot recognize the wrong valid source among two records with the same
@@ -80,7 +82,8 @@ supplemental embeddings, token mappings, tokenizer files, source helpers and
 frozen evaluation sets without importing a model or initializing CUDA. It writes
 only a new JSON file under the dedicated research artifact root and refuses to
 overwrite it. Six CPU fixture tests cover its scope and missing-asset behavior.
-It has not run on the original assets, and does not authorize an experiment.
+It has now hashed all 42 expected original files and verified evaluation-set
+counts (450 values, 208 entity cases); this does not authorize an experiment.
 
 Original entity Arm A used frozen SV3; Arm B used continued-trained SV3R.
 Replaying the same checkpoint in both arms would not reproduce that experiment.
