@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=77.0.3"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "saxil-reference-runtime"
+version = "0.0.0.dev0"
+description = "Experimental typed turn references for exact values and entity names"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+classifiers = ["Development Status :: 2 - Pre-Alpha", "Programming Language :: Python :: 3"]
+
+[tool.setuptools.packages.find]
+where = ["src"]

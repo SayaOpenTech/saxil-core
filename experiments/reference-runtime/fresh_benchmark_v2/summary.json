@@ -1,0 +1,286 @@
+{
+  "study": "SAXIL-REFERENCE-HOSTED-FRESH-V2",
+  "model": "qwen/qwen3.5-9b",
+  "historical_checkpoint_replay": false,
+  "requests_completed": 1080,
+  "arms": {
+    "direct_json": {
+      "n": 360,
+      "correct": 355,
+      "exact": 0.9861111111111112,
+      "per_family": {
+        "price": {
+          "n": 30,
+          "correct": 30,
+          "exact": 1.0
+        },
+        "phone": {
+          "n": 30,
+          "correct": 29,
+          "exact": 0.9666666666666667
+        },
+        "date": {
+          "n": 30,
+          "correct": 29,
+          "exact": 0.9666666666666667
+        },
+        "time": {
+          "n": 30,
+          "correct": 30,
+          "exact": 1.0
+        },
+        "duration": {
+          "n": 30,
+          "correct": 29,
+          "exact": 0.9666666666666667
+        },
+        "percentage": {
+          "n": 30,
+          "correct": 30,
+          "exact": 1.0
+        },
+        "price_discount": {
+          "n": 30,
+          "correct": 30,
+          "exact": 1.0
+        },
+        "start_duration": {
+          "n": 30,
+          "correct": 30,
+          "exact": 1.0
+        },
+        "two_durations": {
+          "n": 30,
+          "correct": 29,
+          "exact": 0.9666666666666667
+        },
+        "same_role_offers": {
+          "n": 30,
+          "correct": 30,
+          "exact": 1.0
+        },
+        "unicode_name": {
+          "n": 30,
+          "correct": 29,
+          "exact": 0.9666666666666667
+        },
+        "two_entities": {
+          "n": 30,
+          "correct": 30,
+          "exact": 1.0
+        }
+      },
+      "per_seed": {
+        "42": {
+          "n": 120,
+          "correct": 119
+        },
+        "43": {
+          "n": 120,
+          "correct": 118
+        },
+        "44": {
+          "n": 120,
+          "correct": 118
+        }
+      },
+      "transport_errors": 5,
+      "parse_or_resolve_errors": {},
+      "prompt_tokens_total": 117683,
+      "completion_tokens_total": 24321,
+      "median_api_wall_ms": 1976.6817500001252,
+      "quality_gate_pass": false
+    },
+    "reference_json": {
+      "n": 360,
+      "correct": 359,
+      "exact": 0.9972222222222222,
+      "per_family": {
+        "price": {
+          "n": 30,
+          "correct": 30,
+          "exact": 1.0
+        },
+        "phone": {
+          "n": 30,
+          "correct": 30,
+          "exact": 1.0
+        },
+        "date": {
+          "n": 30,
+          "correct": 30,
+          "exact": 1.0
+        },
+        "time": {
+          "n": 30,
+          "correct": 30,
+          "exact": 1.0
+        },
+        "duration": {
+          "n": 30,
+          "correct": 30,
+          "exact": 1.0
+        },
+        "percentage": {
+          "n": 30,
+          "correct": 30,
+          "exact": 1.0
+        },
+        "price_discount": {
+          "n": 30,
+          "correct": 30,
+          "exact": 1.0
+        },
+        "start_duration": {
+          "n": 30,
+          "correct": 29,
+          "exact": 0.9666666666666667
+        },
+        "two_durations": {
+          "n": 30,
+          "correct": 30,
+          "exact": 1.0
+        },
+        "same_role_offers": {
+          "n": 30,
+          "correct": 30,
+          "exact": 1.0
+        },
+        "unicode_name": {
+          "n": 30,
+          "correct": 30,
+          "exact": 1.0
+        },
+        "two_entities": {
+          "n": 30,
+          "correct": 30,
+          "exact": 1.0
+        }
+      },
+      "per_seed": {
+        "42": {
+          "n": 120,
+          "correct": 120
+        },
+        "43": {
+          "n": 120,
+          "correct": 120
+        },
+        "44": {
+          "n": 120,
+          "correct": 119
+        }
+      },
+      "transport_errors": 1,
+      "parse_or_resolve_errors": {},
+      "prompt_tokens_total": 97887,
+      "completion_tokens_total": 20076,
+      "median_api_wall_ms": 1844.0399500002513,
+      "quality_gate_pass": true
+    },
+    "reference_alias": {
+      "n": 360,
+      "correct": 358,
+      "exact": 0.9944444444444445,
+      "per_family": {
+        "price": {
+          "n": 30,
+          "correct": 30,
+          "exact": 1.0
+        },
+        "phone": {
+          "n": 30,
+          "correct": 29,
+          "exact": 0.9666666666666667
+        },
+        "date": {
+          "n": 30,
+          "correct": 30,
+          "exact": 1.0
+        },
+        "time": {
+          "n": 30,
+          "correct": 30,
+          "exact": 1.0
+        },
+        "duration": {
+          "n": 30,
+          "correct": 30,
+          "exact": 1.0
+        },
+        "percentage": {
+          "n": 30,
+          "correct": 30,
+          "exact": 1.0
+        },
+        "price_discount": {
+          "n": 30,
+          "correct": 30,
+          "exact": 1.0
+        },
+        "start_duration": {
+          "n": 30,
+          "correct": 29,
+          "exact": 0.9666666666666667
+        },
+        "two_durations": {
+          "n": 30,
+          "correct": 30,
+          "exact": 1.0
+        },
+        "same_role_offers": {
+          "n": 30,
+          "correct": 30,
+          "exact": 1.0
+        },
+        "unicode_name": {
+          "n": 30,
+          "correct": 30,
+          "exact": 1.0
+        },
+        "two_entities": {
+          "n": 30,
+          "correct": 30,
+          "exact": 1.0
+        }
+      },
+      "per_seed": {
+        "42": {
+          "n": 120,
+          "correct": 118
+        },
+        "43": {
+          "n": 120,
+          "correct": 120
+        },
+        "44": {
+          "n": 120,
+          "correct": 120
+        }
+      },
+      "transport_errors": 2,
+      "parse_or_resolve_errors": {},
+      "prompt_tokens_total": 98346,
+      "completion_tokens_total": 3349,
+      "median_api_wall_ms": 1374.8303499996837,
+      "quality_gate_pass": true
+    }
+  },
+  "actual_reported_cost_usd": 0.04332810000000009,
+  "paired_correctness": [
+    {
+      "a": "direct_json",
+      "b": "reference_json",
+      "paired_n": 360,
+      "a_only_correct": 1,
+      "b_only_correct": 5
+    },
+    {
+      "a": "reference_json",
+      "b": "reference_alias",
+      "paired_n": 360,
+      "a_only_correct": 2,
+      "b_only_correct": 1
+    }
+  ]
+}

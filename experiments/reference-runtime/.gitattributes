@@ -1,0 +1,8 @@
+*.py text eol=lf
+*.md text eol=lf
+*.toml text eol=lf
+*.json text eol=lf
+*.gz -text
+# Preserve the exact pre-inference bytes covered by the archived seals.
+fresh_reference_benchmark*.py -text whitespace=cr-at-eol
+candidate/src/saxil_refs/runtime.py -text

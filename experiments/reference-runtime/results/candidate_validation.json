@@ -1,0 +1,28 @@
+{
+  "date": "2026-10-29",
+  "status": "LOCAL_CANDIDATE_CHECKS_PASSED",
+  "tests_passed": 19,
+  "tests_failed": 0,
+  "installed_wheel": {
+    "python": "3.13.14",
+    "version": "0.0.0.dev0",
+    "requires": [],
+    "installed_in_venv": true
+  },
+  "artifacts": [
+    {
+      "name": "saxil_reference_runtime-0.0.0.dev0-py3-none-any.whl",
+      "bytes": 9712,
+      "sha256": "6783f392b20ddf07d4477b04f8ed0ebf03626f456445b856fd30fcd8fa3766b1"
+    },
+    {
+      "name": "saxil_reference_runtime-0.0.0.dev0.tar.gz",
+      "bytes": 10667,
+      "sha256": "b59f3572b02413570bfe2ffb8ef4911e59c372c8eddcb5b75dc88cb7621ceadc"
+    }
+  ],
+  "model_replay_performed": false,
+  "training_performed": false,
+  "public_release_ready": false,
+  "scope": "Runtime safety and offline package build/install, not semantic model accuracy or superiority over JSON"
+}
