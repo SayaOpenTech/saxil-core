@@ -1,0 +1,824 @@
+{
+  "date_utc": "2026-10-29T12:48:03.126831+00:00",
+  "status": "FOUR_FROZEN_CHECKPOINT_ARMS_COMPLETE",
+  "records": [
+    {
+      "experiment_run_id": "EXP-20261029-0003",
+      "mission_id": "RUN-20261029-0013",
+      "runner_status": "COMPLETED",
+      "plan_hash": "ed02492c6aac41350695379ee97986369ce572bfff9ff3de368f3a361423af83",
+      "arm": "value_a",
+      "stage": "smoke",
+      "network_allowed": false,
+      "status": "REFERENCE_REPLAY_SMOKE_COMPLETE",
+      "n": 1,
+      "mode": "SMOKE",
+      "metrics_sha256": "7b9d31c682d2146238c1e0ec95772f1d1853015d4c7597d98fa46446d84b0b59",
+      "metrics": {
+        "parse_validity": 1.0,
+        "exact_value": 0.0,
+        "value_ref": 1.0,
+        "action": 1.0,
+        "independent_recompute": {
+          "n": 1,
+          "exact_value": 0.0,
+          "parse_ok": 1.0,
+          "exact_value_count": 0,
+          "parse_ok_count": 1,
+          "source": "independent_gold_pred_fields"
+        },
+        "raw_prediction_rescore": {
+          "n": 1,
+          "parse_ok_count": 1,
+          "exact_count": 0,
+          "parse_validity": 1.0,
+          "exact_rate": 0.0,
+          "per_case_discrepancies": 0,
+          "source": "second_decode_of_captured_raw_ids_using_original_codec"
+        }
+      },
+      "checkpoint": "experiments/TML-SV3R2D-R/checkpoints/d1a",
+      "seed": 42,
+      "max_new_tokens": 48,
+      "latency_equivalence_claim": false,
+      "base_shards_hashed": 2,
+      "asset_hashes": {
+        "experiments/TML-SV3R2D-R/checkpoints/d1a/adapter/adapter_model.safetensors": "fead7d40253dd3712409bc623e28c3c5b184ee38540c6c4be8d6dd051f614149",
+        "experiments/TML-SV3R2D-R/checkpoints/d1a/adapter/adapter_config.json": "be13f33c371aec6ee7604cae2da90c19c74de6002d69d873645db44081484d50",
+        "experiments/TML-SV3R2D-R/checkpoints/d1a/saxil_extra.pt": "d9f883ca6af1242348b60726597ce04b59d1a3db3da8906dfe8eda63f15e8aa0",
+        "experiments/TML-SV3R2D-R/checkpoints/d1a/token_mapping.json": "cacc97311aec65b7c0998aec39ecb878a3c9d4dc94decd3e084acd7186f76175",
+        "experiments/TML-SV3R2D-R/corpus/numeric_dev.jsonl": "9c298c314da2d07770d34249bb532ab9296af09b8a75fb06db5755c0221b39d5",
+        "models/saxil/qwen3.5-4b-saxil/model.safetensors.index.json": "cf3f798ee02ba45f9622aa8892a47369ab667d0afbf154ee7c2212de42e6302d",
+        "models/saxil/qwen3.5-4b-saxil/config.json": "ddc63e1c717afa86c865bb5e01313d89d72bb53b97ad4a8a03ba8510c0621670",
+        "models/saxil/qwen3.5-4b-saxil/model.safetensors-00001-of-00002.safetensors": "26a93f066e1916adb13453dae5a0c707c0fbc71299ed98779571a907b8e74c61",
+        "models/saxil/qwen3.5-4b-saxil/model.safetensors-00002-of-00002.safetensors": "cb544bd9bfae93dc59b0f22b292f5933573854a7f9b97835c67060d7d910e188"
+      },
+      "per_family": {
+        "small_int": {
+          "n": 1,
+          "exact_value": 0.0,
+          "parse": 1.0,
+          "action": 1.0
+        }
+      },
+      "per_case_predictions.jsonl_sha256": "df4988e35bd5e18f9688cbffe5e97992522913b21d04d793e454da420251c67a",
+      "evaluator_rows.jsonl_sha256": "0f12aa4b2a46bb0a533cb4bbe6cf88dce66fece4ae54ec4c3ef0777aa94386ea",
+      "additional_quality_counts": {
+        "joint_parse_exact_value_and_action": 0
+      }
+    },
+    {
+      "experiment_run_id": "EXP-20261029-0004",
+      "mission_id": "RUN-20261029-0014",
+      "runner_status": "COMPLETED",
+      "plan_hash": "9510993d341c4ee9665497363fd3694629c41d6f57de276e9b7db3de869c47e8",
+      "arm": "value_b",
+      "stage": "smoke",
+      "network_allowed": false,
+      "status": "REFERENCE_REPLAY_SMOKE_COMPLETE",
+      "n": 1,
+      "mode": "SMOKE",
+      "metrics_sha256": "1f83fc338b96dafdd2ac673dc09f23b7aac15b5b096784b5705bdd134d5dd5c2",
+      "metrics": {
+        "parse_validity": 1.0,
+        "exact_value": 1.0,
+        "value_ref": 1.0,
+        "action": 1.0,
+        "independent_recompute": {
+          "n": 1,
+          "exact_value": 1.0,
+          "parse_ok": 1.0,
+          "exact_value_count": 1,
+          "parse_ok_count": 1,
+          "source": "independent_gold_pred_fields"
+        },
+        "raw_prediction_rescore": {
+          "n": 1,
+          "parse_ok_count": 1,
+          "exact_count": 1,
+          "parse_validity": 1.0,
+          "exact_rate": 1.0,
+          "per_case_discrepancies": 0,
+          "source": "second_decode_of_captured_raw_ids_using_original_codec"
+        }
+      },
+      "checkpoint": "experiments/TML-SV3R2D-R/checkpoints/d1b",
+      "seed": 42,
+      "max_new_tokens": 48,
+      "latency_equivalence_claim": false,
+      "base_shards_hashed": 2,
+      "asset_hashes": {
+        "experiments/TML-SV3R2D-R/checkpoints/d1b/adapter/adapter_model.safetensors": "795827cb68f8be6b485789ff3f5ce8793e31be771e3aa1d6cfcc654fe148d370",
+        "experiments/TML-SV3R2D-R/checkpoints/d1b/adapter/adapter_config.json": "a1b2e178a5ff891c60abb402a56b06a4eceaeb1cf65de522b5bc949587a2da3f",
+        "experiments/TML-SV3R2D-R/checkpoints/d1b/saxil_extra.pt": "a6bb9b01202a8174bc85ca25916c4c09c2d5fea86b829d2743e2d03a7bdfd616",
+        "experiments/TML-SV3R2D-R/checkpoints/d1b/token_mapping.json": "cacc97311aec65b7c0998aec39ecb878a3c9d4dc94decd3e084acd7186f76175",
+        "experiments/TML-SV3R2D-R/corpus/numeric_dev.jsonl": "9c298c314da2d07770d34249bb532ab9296af09b8a75fb06db5755c0221b39d5",
+        "models/saxil/qwen3.5-4b-saxil/model.safetensors.index.json": "cf3f798ee02ba45f9622aa8892a47369ab667d0afbf154ee7c2212de42e6302d",
+        "models/saxil/qwen3.5-4b-saxil/config.json": "ddc63e1c717afa86c865bb5e01313d89d72bb53b97ad4a8a03ba8510c0621670",
+        "models/saxil/qwen3.5-4b-saxil/model.safetensors-00001-of-00002.safetensors": "26a93f066e1916adb13453dae5a0c707c0fbc71299ed98779571a907b8e74c61",
+        "models/saxil/qwen3.5-4b-saxil/model.safetensors-00002-of-00002.safetensors": "cb544bd9bfae93dc59b0f22b292f5933573854a7f9b97835c67060d7d910e188"
+      },
+      "per_family": {
+        "small_int": {
+          "n": 1,
+          "exact_value": 1.0,
+          "parse": 1.0,
+          "action": 1.0
+        }
+      },
+      "per_case_predictions.jsonl_sha256": "aac1087714223f3f82af8c9b5bec2e9d78a318ca57cf9b7d4ddf6edc47a20a21",
+      "evaluator_rows.jsonl_sha256": "880f7a7f6fedc1907e2080e72151b28f8597c031b4933dad818ca28e0f0e9834",
+      "additional_quality_counts": {
+        "joint_parse_exact_value_and_action": 1
+      }
+    },
+    {
+      "experiment_run_id": "EXP-20261029-0005",
+      "mission_id": "RUN-20261029-0015",
+      "runner_status": "COMPLETED",
+      "plan_hash": "d4bac457b2aaf8060fc56bd050dbca8906fef44cd9fee5162072a40c97090bba",
+      "arm": "entity_a",
+      "stage": "smoke",
+      "network_allowed": false,
+      "status": "REFERENCE_REPLAY_SMOKE_COMPLETE",
+      "n": 1,
+      "mode": "SMOKE",
+      "metrics_sha256": "e16f4dd7be09b48531bda9c246008feabb5debf94b79ed8fa24aefbc69501676",
+      "metrics": {
+        "parse_validity": 0.0,
+        "entity_ref": 1.0,
+        "contract_f1": 0.0,
+        "task": 0.0,
+        "independent_recompute": {
+          "n": 1,
+          "entity_ref": 1.0,
+          "parse_ok": 0.0,
+          "entity_ref_count": 1,
+          "parse_ok_count": 0,
+          "legacy_unordered_set_metric_caveat": "ok_entity_ref uses set(gold_e)==set(pred_e); order / multiplicity are not distinguished (legacy SV3R metric).",
+          "source": "independent_raw_ids_parse_status"
+        },
+        "raw_prediction_rescore": {
+          "n": 1,
+          "parse_ok_count": 0,
+          "exact_count": 1,
+          "parse_validity": 0.0,
+          "exact_rate": 1.0,
+          "per_case_discrepancies": 0,
+          "source": "second_decode_of_captured_raw_ids_using_original_codec"
+        }
+      },
+      "checkpoint": "models/saxil/qwen3.5-4b-saxil-sv3",
+      "seed": 42,
+      "max_new_tokens": 48,
+      "latency_equivalence_claim": false,
+      "base_shards_hashed": 2,
+      "asset_hashes": {
+        "models/saxil/qwen3.5-4b-saxil-sv3/adapter/adapter_model.safetensors": "820712795737a3ec433a4fa4d987525fe5602cc37c21e67d2c6e0552650a3172",
+        "models/saxil/qwen3.5-4b-saxil-sv3/adapter/adapter_config.json": "d82265379e4afc12bc757b62687665ea93ddb869e39438bbc6aebfff4ce5f2e9",
+        "models/saxil/qwen3.5-4b-saxil-sv3/saxil_extra.pt": "cc9156d428a7c85b4d3c1ea9aee662377d22975896cea4706f1562401c82ce09",
+        "models/saxil/qwen3.5-4b-saxil-sv3/token_mapping.json": "cbaad58dc3ec5cf3be0f84ebaed9ea59af804771347cbb95c88e379652429fbb",
+        "experiments/TML-SV3R/training/test.jsonl": "75fd5b0f14a774a696354723a82a5f0aec35116966f50ed78ff964626631e13c",
+        "models/saxil/qwen3.5-4b-saxil/model.safetensors.index.json": "cf3f798ee02ba45f9622aa8892a47369ab667d0afbf154ee7c2212de42e6302d",
+        "models/saxil/qwen3.5-4b-saxil/config.json": "ddc63e1c717afa86c865bb5e01313d89d72bb53b97ad4a8a03ba8510c0621670",
+        "models/saxil/qwen3.5-4b-saxil/model.safetensors-00001-of-00002.safetensors": "26a93f066e1916adb13453dae5a0c707c0fbc71299ed98779571a907b8e74c61",
+        "models/saxil/qwen3.5-4b-saxil/model.safetensors-00002-of-00002.safetensors": "cb544bd9bfae93dc59b0f22b292f5933573854a7f9b97835c67060d7d910e188"
+      },
+      "per_family": {
+        "gold": {
+          "n": 1,
+          "parse": 0.0,
+          "f1": 0.0,
+          "task": 0.0,
+          "entity_ref": 1.0
+        }
+      },
+      "per_case_predictions.jsonl_sha256": "4a124581292bf6458cb2a96360c07eba9151006c0cfb2a48c90af138a276f2ce",
+      "evaluator_rows.jsonl_sha256": "3ac8711feddc60d1288e10dbf12e9f0cb99537b0b1ed6c12a616fdaef6c39057",
+      "additional_quality_counts": {
+        "joint_parse_and_entity_ref": 0,
+        "nonempty_gold_entity_cases": 0,
+        "correct_ref_among_nonempty_gold": 0,
+        "joint_parse_and_task": 0,
+        "joint_parse_and_all_ok_fields": 0
+      }
+    },
+    {
+      "experiment_run_id": "EXP-20261029-0006",
+      "mission_id": "RUN-20261029-0016",
+      "runner_status": "COMPLETED",
+      "plan_hash": "9a94666c1a52af82f77fa0b6b38d107e6abe776d0f55a401c8261d9f67ee961c",
+      "arm": "entity_b",
+      "stage": "smoke",
+      "network_allowed": false,
+      "status": "REFERENCE_REPLAY_SMOKE_COMPLETE",
+      "n": 1,
+      "mode": "SMOKE",
+      "metrics_sha256": "b7d4acbb2db4296cd06c22e32374a6638b9dfb140d5cd04bba00a6e1e463f293",
+      "metrics": {
+        "parse_validity": 1.0,
+        "entity_ref": 1.0,
+        "contract_f1": 0.8571,
+        "task": 1.0,
+        "independent_recompute": {
+          "n": 1,
+          "entity_ref": 1.0,
+          "parse_ok": 1.0,
+          "entity_ref_count": 1,
+          "parse_ok_count": 1,
+          "legacy_unordered_set_metric_caveat": "ok_entity_ref uses set(gold_e)==set(pred_e); order / multiplicity are not distinguished (legacy SV3R metric).",
+          "source": "independent_raw_ids_parse_status"
+        },
+        "raw_prediction_rescore": {
+          "n": 1,
+          "parse_ok_count": 1,
+          "exact_count": 1,
+          "parse_validity": 1.0,
+          "exact_rate": 1.0,
+          "per_case_discrepancies": 0,
+          "source": "second_decode_of_captured_raw_ids_using_original_codec"
+        }
+      },
+      "checkpoint": "models/saxil/qwen3.5-4b-saxil-sv3r",
+      "seed": 42,
+      "max_new_tokens": 48,
+      "latency_equivalence_claim": false,
+      "base_shards_hashed": 2,
+      "asset_hashes": {
+        "models/saxil/qwen3.5-4b-saxil-sv3r/adapter/adapter_model.safetensors": "3bcc1d829acaae8a90632600d3500e0a32de69345c61be9b68e5ee74f953c632",
+        "models/saxil/qwen3.5-4b-saxil-sv3r/adapter/adapter_config.json": "4eca6c42d0b1aa7e4da5c17c580599b434b9f1a363717e4369c9f60b2954cdc2",
+        "models/saxil/qwen3.5-4b-saxil-sv3r/saxil_extra.pt": "603d226adf26ae0a1ef5ca6bf693cbd47fb0603fd699170b1f3372195b4b6e36",
+        "models/saxil/qwen3.5-4b-saxil-sv3r/token_mapping.json": "cbaad58dc3ec5cf3be0f84ebaed9ea59af804771347cbb95c88e379652429fbb",
+        "experiments/TML-SV3R/training/test.jsonl": "75fd5b0f14a774a696354723a82a5f0aec35116966f50ed78ff964626631e13c",
+        "models/saxil/qwen3.5-4b-saxil/model.safetensors.index.json": "cf3f798ee02ba45f9622aa8892a47369ab667d0afbf154ee7c2212de42e6302d",
+        "models/saxil/qwen3.5-4b-saxil/config.json": "ddc63e1c717afa86c865bb5e01313d89d72bb53b97ad4a8a03ba8510c0621670",
+        "models/saxil/qwen3.5-4b-saxil/model.safetensors-00001-of-00002.safetensors": "26a93f066e1916adb13453dae5a0c707c0fbc71299ed98779571a907b8e74c61",
+        "models/saxil/qwen3.5-4b-saxil/model.safetensors-00002-of-00002.safetensors": "cb544bd9bfae93dc59b0f22b292f5933573854a7f9b97835c67060d7d910e188"
+      },
+      "per_family": {
+        "gold": {
+          "n": 1,
+          "parse": 1.0,
+          "f1": 0.8571,
+          "task": 1.0,
+          "entity_ref": 1.0
+        }
+      },
+      "per_case_predictions.jsonl_sha256": "ee276b54231af42a4a2f60c72cb386c138a8a659e084ced011fad18c5c9e2705",
+      "evaluator_rows.jsonl_sha256": "fec92d0df71cbf844c1dffc209ba320005bd49ee16120b2e737fbf53a3effe4b",
+      "additional_quality_counts": {
+        "joint_parse_and_entity_ref": 1,
+        "nonempty_gold_entity_cases": 0,
+        "correct_ref_among_nonempty_gold": 0,
+        "joint_parse_and_task": 1,
+        "joint_parse_and_all_ok_fields": 0
+      }
+    },
+    {
+      "experiment_run_id": "EXP-20261029-0007",
+      "mission_id": "RUN-20261029-0017",
+      "runner_status": "COMPLETED",
+      "plan_hash": "3ef447b2f7e4c3ea5b9a9efed0b7a83e549a6b5e5a5256676a269e4d96b83232",
+      "arm": "value_a",
+      "stage": "full",
+      "network_allowed": false,
+      "status": "REFERENCE_REPLAY_COMPLETE",
+      "n": 450,
+      "mode": "FULL",
+      "metrics_sha256": "f60b19659bc6d2e55bb7ce653eddb4c4375ef79b2bef410b039e9eb2e9ef350e",
+      "metrics": {
+        "parse_validity": 0.7644444444444445,
+        "exact_value": 0.11555555555555555,
+        "value_ref": 1.0,
+        "action": 0.7644444444444445,
+        "independent_recompute": {
+          "n": 450,
+          "exact_value": 0.11555555555555555,
+          "parse_ok": 0.7644444444444445,
+          "exact_value_count": 52,
+          "parse_ok_count": 344,
+          "source": "independent_gold_pred_fields"
+        },
+        "raw_prediction_rescore": {
+          "n": 450,
+          "parse_ok_count": 344,
+          "exact_count": 52,
+          "parse_validity": 0.7644444444444445,
+          "exact_rate": 0.11555555555555555,
+          "per_case_discrepancies": 0,
+          "source": "second_decode_of_captured_raw_ids_using_original_codec"
+        }
+      },
+      "checkpoint": "experiments/TML-SV3R2D-R/checkpoints/d1a",
+      "seed": 42,
+      "max_new_tokens": 48,
+      "latency_equivalence_claim": false,
+      "base_shards_hashed": 2,
+      "asset_hashes": {
+        "experiments/TML-SV3R2D-R/checkpoints/d1a/adapter/adapter_model.safetensors": "fead7d40253dd3712409bc623e28c3c5b184ee38540c6c4be8d6dd051f614149",
+        "experiments/TML-SV3R2D-R/checkpoints/d1a/adapter/adapter_config.json": "be13f33c371aec6ee7604cae2da90c19c74de6002d69d873645db44081484d50",
+        "experiments/TML-SV3R2D-R/checkpoints/d1a/saxil_extra.pt": "d9f883ca6af1242348b60726597ce04b59d1a3db3da8906dfe8eda63f15e8aa0",
+        "experiments/TML-SV3R2D-R/checkpoints/d1a/token_mapping.json": "cacc97311aec65b7c0998aec39ecb878a3c9d4dc94decd3e084acd7186f76175",
+        "experiments/TML-SV3R2D-R/corpus/numeric_dev.jsonl": "9c298c314da2d07770d34249bb532ab9296af09b8a75fb06db5755c0221b39d5",
+        "models/saxil/qwen3.5-4b-saxil/model.safetensors.index.json": "cf3f798ee02ba45f9622aa8892a47369ab667d0afbf154ee7c2212de42e6302d",
+        "models/saxil/qwen3.5-4b-saxil/config.json": "ddc63e1c717afa86c865bb5e01313d89d72bb53b97ad4a8a03ba8510c0621670",
+        "models/saxil/qwen3.5-4b-saxil/model.safetensors-00001-of-00002.safetensors": "26a93f066e1916adb13453dae5a0c707c0fbc71299ed98779571a907b8e74c61",
+        "models/saxil/qwen3.5-4b-saxil/model.safetensors-00002-of-00002.safetensors": "cb544bd9bfae93dc59b0f22b292f5933573854a7f9b97835c67060d7d910e188"
+      },
+      "per_family": {
+        "small_int": {
+          "n": 45,
+          "exact_value": 0.1111111111111111,
+          "parse": 1.0,
+          "action": 1.0
+        },
+        "price": {
+          "n": 45,
+          "exact_value": 0.0,
+          "parse": 0.7333333333333333,
+          "action": 0.7333333333333333
+        },
+        "uint32": {
+          "n": 45,
+          "exact_value": 0.0,
+          "parse": 1.0,
+          "action": 1.0
+        },
+        "duration": {
+          "n": 45,
+          "exact_value": 0.24444444444444444,
+          "parse": 0.7777777777777778,
+          "action": 0.7777777777777778
+        },
+        "date": {
+          "n": 45,
+          "exact_value": 0.15555555555555556,
+          "parse": 0.4888888888888889,
+          "action": 0.4888888888888889
+        },
+        "time": {
+          "n": 45,
+          "exact_value": 0.08888888888888889,
+          "parse": 0.5777777777777777,
+          "action": 0.5777777777777777
+        },
+        "percent": {
+          "n": 45,
+          "exact_value": 0.5555555555555556,
+          "parse": 1.0,
+          "action": 1.0
+        },
+        "phone": {
+          "n": 45,
+          "exact_value": 0.0,
+          "parse": 0.4888888888888889,
+          "action": 0.4888888888888889
+        },
+        "price_discount": {
+          "n": 45,
+          "exact_value": 0.0,
+          "parse": 0.8444444444444444,
+          "action": 0.8444444444444444
+        },
+        "min_max": {
+          "n": 15,
+          "exact_value": 0.0,
+          "parse": 0.4666666666666667,
+          "action": 0.4666666666666667
+        },
+        "start_duration": {
+          "n": 15,
+          "exact_value": 0.0,
+          "parse": 0.7333333333333333,
+          "action": 0.7333333333333333
+        },
+        "two_prices": {
+          "n": 15,
+          "exact_value": 0.0,
+          "parse": 1.0,
+          "action": 1.0
+        }
+      },
+      "per_case_predictions.jsonl_sha256": "26bba934bf724bd13f9993798904abe3e4feaf6c124ade8db317e08a66ac092c",
+      "evaluator_rows.jsonl_sha256": "3a6cbb77b800591c55cc541ff554a498d19b9817f54aceffeec2e7a4ccd37e08",
+      "additional_quality_counts": {
+        "joint_parse_exact_value_and_action": 52
+      }
+    },
+    {
+      "experiment_run_id": "EXP-20261029-0008",
+      "mission_id": "RUN-20261029-0018",
+      "runner_status": "COMPLETED",
+      "plan_hash": "84a64ce1741b99fd2cddf3c22d4854d5104b5df4ab07f43879122bca264101cc",
+      "arm": "value_b",
+      "stage": "full",
+      "network_allowed": false,
+      "status": "REFERENCE_REPLAY_COMPLETE",
+      "n": 450,
+      "mode": "FULL",
+      "metrics_sha256": "aa0acffceda3919a101155dc8855d111d9703be262fd6897cc48b1322e5299e5",
+      "metrics": {
+        "parse_validity": 1.0,
+        "exact_value": 0.9666666666666667,
+        "value_ref": 0.9666666666666667,
+        "action": 1.0,
+        "independent_recompute": {
+          "n": 450,
+          "exact_value": 0.9666666666666667,
+          "parse_ok": 1.0,
+          "exact_value_count": 435,
+          "parse_ok_count": 450,
+          "source": "independent_gold_pred_fields"
+        },
+        "raw_prediction_rescore": {
+          "n": 450,
+          "parse_ok_count": 450,
+          "exact_count": 435,
+          "parse_validity": 1.0,
+          "exact_rate": 0.9666666666666667,
+          "per_case_discrepancies": 0,
+          "source": "second_decode_of_captured_raw_ids_using_original_codec"
+        }
+      },
+      "checkpoint": "experiments/TML-SV3R2D-R/checkpoints/d1b",
+      "seed": 42,
+      "max_new_tokens": 48,
+      "latency_equivalence_claim": false,
+      "base_shards_hashed": 2,
+      "asset_hashes": {
+        "experiments/TML-SV3R2D-R/checkpoints/d1b/adapter/adapter_model.safetensors": "795827cb68f8be6b485789ff3f5ce8793e31be771e3aa1d6cfcc654fe148d370",
+        "experiments/TML-SV3R2D-R/checkpoints/d1b/adapter/adapter_config.json": "a1b2e178a5ff891c60abb402a56b06a4eceaeb1cf65de522b5bc949587a2da3f",
+        "experiments/TML-SV3R2D-R/checkpoints/d1b/saxil_extra.pt": "a6bb9b01202a8174bc85ca25916c4c09c2d5fea86b829d2743e2d03a7bdfd616",
+        "experiments/TML-SV3R2D-R/checkpoints/d1b/token_mapping.json": "cacc97311aec65b7c0998aec39ecb878a3c9d4dc94decd3e084acd7186f76175",
+        "experiments/TML-SV3R2D-R/corpus/numeric_dev.jsonl": "9c298c314da2d07770d34249bb532ab9296af09b8a75fb06db5755c0221b39d5",
+        "models/saxil/qwen3.5-4b-saxil/model.safetensors.index.json": "cf3f798ee02ba45f9622aa8892a47369ab667d0afbf154ee7c2212de42e6302d",
+        "models/saxil/qwen3.5-4b-saxil/config.json": "ddc63e1c717afa86c865bb5e01313d89d72bb53b97ad4a8a03ba8510c0621670",
+        "models/saxil/qwen3.5-4b-saxil/model.safetensors-00001-of-00002.safetensors": "26a93f066e1916adb13453dae5a0c707c0fbc71299ed98779571a907b8e74c61",
+        "models/saxil/qwen3.5-4b-saxil/model.safetensors-00002-of-00002.safetensors": "cb544bd9bfae93dc59b0f22b292f5933573854a7f9b97835c67060d7d910e188"
+      },
+      "per_family": {
+        "small_int": {
+          "n": 45,
+          "exact_value": 1.0,
+          "parse": 1.0,
+          "action": 1.0
+        },
+        "price": {
+          "n": 45,
+          "exact_value": 1.0,
+          "parse": 1.0,
+          "action": 1.0
+        },
+        "uint32": {
+          "n": 45,
+          "exact_value": 1.0,
+          "parse": 1.0,
+          "action": 1.0
+        },
+        "duration": {
+          "n": 45,
+          "exact_value": 1.0,
+          "parse": 1.0,
+          "action": 1.0
+        },
+        "date": {
+          "n": 45,
+          "exact_value": 1.0,
+          "parse": 1.0,
+          "action": 1.0
+        },
+        "time": {
+          "n": 45,
+          "exact_value": 1.0,
+          "parse": 1.0,
+          "action": 1.0
+        },
+        "percent": {
+          "n": 45,
+          "exact_value": 1.0,
+          "parse": 1.0,
+          "action": 1.0
+        },
+        "phone": {
+          "n": 45,
+          "exact_value": 1.0,
+          "parse": 1.0,
+          "action": 1.0
+        },
+        "price_discount": {
+          "n": 45,
+          "exact_value": 1.0,
+          "parse": 1.0,
+          "action": 1.0
+        },
+        "min_max": {
+          "n": 15,
+          "exact_value": 1.0,
+          "parse": 1.0,
+          "action": 1.0
+        },
+        "start_duration": {
+          "n": 15,
+          "exact_value": 0.0,
+          "parse": 1.0,
+          "action": 1.0
+        },
+        "two_prices": {
+          "n": 15,
+          "exact_value": 1.0,
+          "parse": 1.0,
+          "action": 1.0
+        }
+      },
+      "per_case_predictions.jsonl_sha256": "e9b13bff78dfe62a40e643f4b32aef0af599bc51793f4ae2fcd664fddb923042",
+      "evaluator_rows.jsonl_sha256": "7d3a46116ed783209c2caeefa4098d061757debfe2d13adc262c5fa1d2f30db1",
+      "additional_quality_counts": {
+        "joint_parse_exact_value_and_action": 435
+      }
+    },
+    {
+      "experiment_run_id": "EXP-20261029-0009",
+      "mission_id": "RUN-20261029-0019",
+      "runner_status": "COMPLETED",
+      "plan_hash": "864301c325989e4c29e05b06c6b29cac0c8337502f6ccb310b731d6fff1d4d87",
+      "arm": "entity_a",
+      "stage": "full",
+      "network_allowed": false,
+      "status": "REFERENCE_REPLAY_COMPLETE",
+      "n": 208,
+      "mode": "FULL",
+      "metrics_sha256": "b68f2c929ae1a042da959238eda8eabe5a37eb8a30fa5091c702053b2ed84de4",
+      "metrics": {
+        "parse_validity": 0.4423076923076923,
+        "entity_ref": 0.49038461538461536,
+        "contract_f1": 0.6508432692307693,
+        "task": 0.20673076923076922,
+        "independent_recompute": {
+          "n": 208,
+          "entity_ref": 0.49038461538461536,
+          "parse_ok": 0.4423076923076923,
+          "entity_ref_count": 102,
+          "parse_ok_count": 92,
+          "legacy_unordered_set_metric_caveat": "ok_entity_ref uses set(gold_e)==set(pred_e); order / multiplicity are not distinguished (legacy SV3R metric).",
+          "source": "independent_raw_ids_parse_status"
+        },
+        "raw_prediction_rescore": {
+          "n": 208,
+          "parse_ok_count": 92,
+          "exact_count": 102,
+          "parse_validity": 0.4423076923076923,
+          "exact_rate": 0.49038461538461536,
+          "per_case_discrepancies": 0,
+          "source": "second_decode_of_captured_raw_ids_using_original_codec"
+        }
+      },
+      "checkpoint": "models/saxil/qwen3.5-4b-saxil-sv3",
+      "seed": 42,
+      "max_new_tokens": 48,
+      "latency_equivalence_claim": false,
+      "base_shards_hashed": 2,
+      "asset_hashes": {
+        "models/saxil/qwen3.5-4b-saxil-sv3/adapter/adapter_model.safetensors": "820712795737a3ec433a4fa4d987525fe5602cc37c21e67d2c6e0552650a3172",
+        "models/saxil/qwen3.5-4b-saxil-sv3/adapter/adapter_config.json": "d82265379e4afc12bc757b62687665ea93ddb869e39438bbc6aebfff4ce5f2e9",
+        "models/saxil/qwen3.5-4b-saxil-sv3/saxil_extra.pt": "cc9156d428a7c85b4d3c1ea9aee662377d22975896cea4706f1562401c82ce09",
+        "models/saxil/qwen3.5-4b-saxil-sv3/token_mapping.json": "cbaad58dc3ec5cf3be0f84ebaed9ea59af804771347cbb95c88e379652429fbb",
+        "experiments/TML-SV3R/training/test.jsonl": "75fd5b0f14a774a696354723a82a5f0aec35116966f50ed78ff964626631e13c",
+        "models/saxil/qwen3.5-4b-saxil/model.safetensors.index.json": "cf3f798ee02ba45f9622aa8892a47369ab667d0afbf154ee7c2212de42e6302d",
+        "models/saxil/qwen3.5-4b-saxil/config.json": "ddc63e1c717afa86c865bb5e01313d89d72bb53b97ad4a8a03ba8510c0621670",
+        "models/saxil/qwen3.5-4b-saxil/model.safetensors-00001-of-00002.safetensors": "26a93f066e1916adb13453dae5a0c707c0fbc71299ed98779571a907b8e74c61",
+        "models/saxil/qwen3.5-4b-saxil/model.safetensors-00002-of-00002.safetensors": "cb544bd9bfae93dc59b0f22b292f5933573854a7f9b97835c67060d7d910e188"
+      },
+      "per_family": {
+        "compositional": {
+          "n": 3,
+          "parse": 0.0,
+          "f1": 0.6666666666666666,
+          "task": 0.0,
+          "entity_ref": 0.3333333333333333
+        },
+        "entity": {
+          "n": 49,
+          "parse": 0.10204081632653061,
+          "f1": 0.932495918367347,
+          "task": 0.0,
+          "entity_ref": 0.061224489795918366
+        },
+        "entity_reuse": {
+          "n": 16,
+          "parse": 0.0,
+          "f1": 1.0,
+          "task": 0.0,
+          "entity_ref": 0.0
+        },
+        "entity_switch": {
+          "n": 10,
+          "parse": 0.0,
+          "f1": 0.8,
+          "task": 0.0,
+          "entity_ref": 0.0
+        },
+        "gold": {
+          "n": 19,
+          "parse": 0.7894736842105263,
+          "f1": 0.5255631578947368,
+          "task": 0.47368421052631576,
+          "entity_ref": 0.8421052631578947
+        },
+        "heldout_entity": {
+          "n": 52,
+          "parse": 0.5769230769230769,
+          "f1": 0.29891153846153845,
+          "task": 0.057692307692307696,
+          "entity_ref": 0.5961538461538461
+        },
+        "long": {
+          "n": 4,
+          "parse": 0.5,
+          "f1": 0.37222500000000003,
+          "task": 0.25,
+          "entity_ref": 0.5
+        },
+        "policy": {
+          "n": 40,
+          "parse": 0.725,
+          "f1": 0.6874625,
+          "task": 0.525,
+          "entity_ref": 0.875
+        },
+        "reset": {
+          "n": 5,
+          "parse": 1.0,
+          "f1": 1.0,
+          "task": 1.0,
+          "entity_ref": 1.0
+        },
+        "voiceagent": {
+          "n": 10,
+          "parse": 0.6,
+          "f1": 0.41666,
+          "task": 0.4,
+          "entity_ref": 0.9
+        }
+      },
+      "per_case_predictions.jsonl_sha256": "b757257e2df7993f813b53255f08e927ea0744354f49c68a62c47f54044efbd9",
+      "evaluator_rows.jsonl_sha256": "093d087512fe8da917569f912ec0955c9594099c17a7a0a773cf014e1d356e34",
+      "additional_quality_counts": {
+        "joint_parse_and_entity_ref": 81,
+        "nonempty_gold_entity_cases": 143,
+        "correct_ref_among_nonempty_gold": 42,
+        "joint_parse_and_task": 43,
+        "joint_parse_and_all_ok_fields": 24
+      }
+    },
+    {
+      "experiment_run_id": "EXP-20261029-0010",
+      "mission_id": "RUN-20261029-0020",
+      "runner_status": "COMPLETED",
+      "plan_hash": "a16a2448333f01e3e4637845245b2c74826d867eb2d7f600152102b005644585",
+      "arm": "entity_b",
+      "stage": "full",
+      "network_allowed": false,
+      "status": "REFERENCE_REPLAY_COMPLETE",
+      "n": 208,
+      "mode": "FULL",
+      "metrics_sha256": "589a8408b741c79acde9d04e91bd80525cefeddc98a8c819d8a77fc59415493a",
+      "metrics": {
+        "parse_validity": 0.8076923076923077,
+        "entity_ref": 0.8365384615384616,
+        "contract_f1": 0.6208735576923077,
+        "task": 0.6153846153846154,
+        "independent_recompute": {
+          "n": 208,
+          "entity_ref": 0.8365384615384616,
+          "parse_ok": 0.8076923076923077,
+          "entity_ref_count": 174,
+          "parse_ok_count": 168,
+          "legacy_unordered_set_metric_caveat": "ok_entity_ref uses set(gold_e)==set(pred_e); order / multiplicity are not distinguished (legacy SV3R metric).",
+          "source": "independent_raw_ids_parse_status"
+        },
+        "raw_prediction_rescore": {
+          "n": 208,
+          "parse_ok_count": 168,
+          "exact_count": 174,
+          "parse_validity": 0.8076923076923077,
+          "exact_rate": 0.8365384615384616,
+          "per_case_discrepancies": 0,
+          "source": "second_decode_of_captured_raw_ids_using_original_codec"
+        }
+      },
+      "checkpoint": "models/saxil/qwen3.5-4b-saxil-sv3r",
+      "seed": 42,
+      "max_new_tokens": 48,
+      "latency_equivalence_claim": false,
+      "base_shards_hashed": 2,
+      "asset_hashes": {
+        "models/saxil/qwen3.5-4b-saxil-sv3r/adapter/adapter_model.safetensors": "3bcc1d829acaae8a90632600d3500e0a32de69345c61be9b68e5ee74f953c632",
+        "models/saxil/qwen3.5-4b-saxil-sv3r/adapter/adapter_config.json": "4eca6c42d0b1aa7e4da5c17c580599b434b9f1a363717e4369c9f60b2954cdc2",
+        "models/saxil/qwen3.5-4b-saxil-sv3r/saxil_extra.pt": "603d226adf26ae0a1ef5ca6bf693cbd47fb0603fd699170b1f3372195b4b6e36",
+        "models/saxil/qwen3.5-4b-saxil-sv3r/token_mapping.json": "cbaad58dc3ec5cf3be0f84ebaed9ea59af804771347cbb95c88e379652429fbb",
+        "experiments/TML-SV3R/training/test.jsonl": "75fd5b0f14a774a696354723a82a5f0aec35116966f50ed78ff964626631e13c",
+        "models/saxil/qwen3.5-4b-saxil/model.safetensors.index.json": "cf3f798ee02ba45f9622aa8892a47369ab667d0afbf154ee7c2212de42e6302d",
+        "models/saxil/qwen3.5-4b-saxil/config.json": "ddc63e1c717afa86c865bb5e01313d89d72bb53b97ad4a8a03ba8510c0621670",
+        "models/saxil/qwen3.5-4b-saxil/model.safetensors-00001-of-00002.safetensors": "26a93f066e1916adb13453dae5a0c707c0fbc71299ed98779571a907b8e74c61",
+        "models/saxil/qwen3.5-4b-saxil/model.safetensors-00002-of-00002.safetensors": "cb544bd9bfae93dc59b0f22b292f5933573854a7f9b97835c67060d7d910e188"
+      },
+      "per_family": {
+        "compositional": {
+          "n": 3,
+          "parse": 0.6666666666666666,
+          "f1": 0.40406666666666663,
+          "task": 0.6666666666666666,
+          "entity_ref": 0.3333333333333333
+        },
+        "entity": {
+          "n": 49,
+          "parse": 0.9183673469387755,
+          "f1": 0.7835448979591836,
+          "task": 0.9183673469387755,
+          "entity_ref": 0.9387755102040817
+        },
+        "entity_reuse": {
+          "n": 16,
+          "parse": 0.8125,
+          "f1": 0.66785,
+          "task": 0.6875,
+          "entity_ref": 0.625
+        },
+        "entity_switch": {
+          "n": 10,
+          "parse": 0.4,
+          "f1": 0.23015,
+          "task": 0.2,
+          "entity_ref": 0.1
+        },
+        "gold": {
+          "n": 19,
+          "parse": 0.8947368421052632,
+          "f1": 0.5896842105263158,
+          "task": 0.5263157894736842,
+          "entity_ref": 0.9473684210526315
+        },
+        "heldout_entity": {
+          "n": 52,
+          "parse": 0.8846153846153846,
+          "f1": 0.6022596153846154,
+          "task": 0.4807692307692308,
+          "entity_ref": 0.8076923076923077
+        },
+        "long": {
+          "n": 4,
+          "parse": 0.75,
+          "f1": 0.2361,
+          "task": 0.0,
+          "entity_ref": 0.5
+        },
+        "policy": {
+          "n": 40,
+          "parse": 0.65,
+          "f1": 0.5993925,
+          "task": 0.65,
+          "entity_ref": 1.0
+        },
+        "reset": {
+          "n": 5,
+          "parse": 1.0,
+          "f1": 1.0,
+          "task": 1.0,
+          "entity_ref": 1.0
+        },
+        "voiceagent": {
+          "n": 10,
+          "parse": 0.7,
+          "f1": 0.41071,
+          "task": 0.2,
+          "entity_ref": 0.9
+        }
+      },
+      "per_case_predictions.jsonl_sha256": "28bea28184b45f43f05c7247ca729836c702da71e3673f764a23abf4b7f89149",
+      "evaluator_rows.jsonl_sha256": "7f027ac4c6e65500567a1f441c7ce9f69c853be7f3e4189e14bc50d9f31b799e",
+      "additional_quality_counts": {
+        "joint_parse_and_entity_ref": 148,
+        "nonempty_gold_entity_cases": 143,
+        "correct_ref_among_nonempty_gold": 109,
+        "joint_parse_and_task": 128,
+        "joint_parse_and_all_ok_fields": 41
+      }
+    }
+  ],
+  "full_completed_arms": [
+    "entity_a",
+    "entity_b",
+    "value_a",
+    "value_b"
+  ],
+  "caveats": [
+    "One-case SMOKE is system validation, not accuracy evidence.",
+    "Current file digests do not prove identity at the time of historical experiments.",
+    "Entity A frozen SV3 and B continued-trained SV3R are different training conditions.",
+    "Legacy entity metric uses unordered sets; repeated refs and ordering are not evaluated.",
+    "Raw rescoring reuses original codec; no independent codec or training replication claim.",
+    "Current evaluator assigns value_ref=True for literal Arm A; archived Arm A CSV records False. Exact decoded values, not this auxiliary flag, are compared.",
+    "Runtime kernel cache was reused after first smoke; no latency equivalence claim.",
+    "No private corpus, model weights, generated private text, or credentials are included here."
+  ]
+}

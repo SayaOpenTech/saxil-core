@@ -1,6 +1,6 @@
 {
   "date": "2026-10-29",
-  "original_checkpoint_inference_replayed": false,
+  "original_checkpoint_inference_replayed": true,
   "runner_startup": {
     "status": "RECOVERED",
     "official_probe": "RUN-20261029-0008",
@@ -35,9 +35,33 @@
     "causal-conv1d": "1.6.2.post1+cu.12.4.torch.2.6"
   },
   "pending": [
-    "Register and authorize a dedicated bounded replay launcher",
-    "Replay original checkpoints without modifying historical data",
-    "Compare raw predictions against archived evidence"
+    "Meet the predeclared >=0.99 overall and >=0.95 per-family model-backed quality gate",
+    "Matched adaptation/training controls before attributing entity gains to representation alone",
+    "Complete adapter/corpus provenance and redistribution review before any native model bundle",
+    "Separate full compositional qualification; historical reports remain yellow"
   ],
-  "no_model_weights_included": true
+  "no_model_weights_included": true,
+  "replay_scope": "Four frozen-checkpoint inference arms; no independent retraining",
+  "one_case_smokes_completed": 4,
+  "full_replay_arms": [
+    "entity_a",
+    "entity_b",
+    "value_a",
+    "value_b"
+  ],
+  "full_replay_cases": 1316,
+  "raw_rescore_discrepancies": 0,
+  "cpu_guard_tests_passed": 20,
+  "base_weights_match_official_qwen_revision": "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a",
+  "original_asset_post_run_integrity": {
+    "files_compared": 42,
+    "all_unchanged": true,
+    "changed_files": [],
+    "scope": "Original inventoried checkpoint/data/mapping/base file contents; no claim about access timestamps",
+    "before_manifest_sha256": "3575d3075884583dfb6e4c04dc9afc9e7995871dcbb2c14984986d17b9d5cd95",
+    "after_manifest_sha256": "3575d3075884583dfb6e4c04dc9afc9e7995871dcbb2c14984986d17b9d5cd95",
+    "historical_identity_proved": false
+  },
+  "model_backed_stable_release_qualified": false,
+  "native_model_bundle_included": false
 }

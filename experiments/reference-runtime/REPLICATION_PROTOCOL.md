@@ -1,7 +1,12 @@
 # Reference runtime: replication and release protocol
 
+> Status update after execution (2026-10-29): all four frozen-checkpoint
+> inference cohorts completed. See [actual revalidation](NATIVE_REVALIDATION.fa.md)
+> and [run records](native_replay_status.json). The protocol and thresholds below
+> are retained; completion does not turn historical yellow qualification green.
+
 Protocol revision: 1; prepared 2026-10-29 before any new model run.
-Status: local runtime candidate validated; historical model replay pending.
+Status at preparation: local runtime candidate validated; historical model replay pending.
 
 ## Claims under evaluation
 

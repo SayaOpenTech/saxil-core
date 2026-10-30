@@ -61,32 +61,54 @@ separately planned future run. It reads `OPENROUTER_API_KEY` from the environmen
 has a fixed budget, and refuses to overwrite existing predictions. Do not remove
 the archived results to rerun in place; use a separately versioned study.
 
+## Frozen-checkpoint revalidation
+
+All four original inference cohorts have now completed: VALUE arms A/B each
+450 DEV cases, and ENTITY arms A/B each 208 TEST cases. Raw generated IDs were
+decoded again and per-case scores checked against the evaluator. See the
+[Persian revalidation report](NATIVE_REVALIDATION.fa.md),
+[sanitized run evidence](native_replay_status.json), and
+[archival comparison](native_archival_comparison.json).
+
+The numeric experiment reproduced 52/450 exact values with direct generation
+and 435/450 with VALUE_REF; every archived decoded value and primary score
+matched in both arms. This supports reference selection for exact values in
+this adapted-model diagnostic. Equivalent references and a resolver can be
+implemented in JSON; this is not evidence of unique SAXIL superiority.
+
+Entity A uses frozen SV3 and B uses continued-trained SV3R. Their comparison
+includes a training difference. Legacy entity-set agreement also permits
+empty-reference matches on invalid messages; the report includes parse and
+joint task/field scores. Replaying existing weights is not independent retraining.
+
 ## Release status
 
-Historical 4B checkpoint inference has not been replayed. Runner startup has
-now recovered in official probe RUN-20261029-0008, and the original Linux
-environment is available. A dedicated governed replay launcher and its actual
-execution are still pending. This hosted 9B study is not that replication.
-See [current native readiness](native_readiness.json).
+The reference runtime and research evidence are experimental. The original
+model-backed release gate (>=99% overall and >=95% per positive family) has not
+been met; historical yellow qualification is retained. No trained model bundle
+or PyPI/stable release is proposed here. Public W2 and SDK version 0.1.0 remain
+unchanged. The independent runtime is not a native-tokenizer/model loader.
 
 This candidate rejects stale, undefined, wrong-role and wrong-type references,
 but it cannot recognize the wrong valid source among two records with the same
-type/role/unit. Domain validation, model quality, and deployment reliability
-remain application responsibilities. The code and synthetic study are a draft
-for research review, not a production-readiness claim.
+type/role/unit. Domain validation, model quality and deployment reliability
+remain application responsibilities.
 
-## Preparing original-host identity capture
+Both local base-weight shards match the official Qwen3.5-4B LFS digests; see
+[base provenance](model_provenance.json). Adapter/corpus provenance remains a
+separate gate for a future model bundle. No private model weights or corpora
+are included. See [native readiness and remaining gates](native_readiness.json).
 
-`inspect_replay_assets.py` can hash the original model, per-arm adapters,
+## Original-host identity capture
+
+`inspect_replay_assets.py` hashes the original model, per-arm adapters,
 supplemental embeddings, token mappings, tokenizer files, source helpers and
 frozen evaluation sets without importing a model or initializing CUDA. It writes
 only a new JSON file under the dedicated research artifact root and refuses to
 overwrite it. Six CPU fixture tests cover its scope and missing-asset behavior.
-It has now hashed all 42 expected original files and verified evaluation-set
-counts (450 values, 208 entity cases); this does not authorize an experiment.
 
-Original entity Arm A used frozen SV3; Arm B used continued-trained SV3R.
-Replaying the same checkpoint in both arms would not reproduce that experiment.
-Current artifact hashes also cannot establish historical identity without an
-original reference digest. Registration/execution on the original Runner host
-remains a separate governed step.
+All 42 inventoried files were hashed before replay and again afterward; their
+contents are unchanged. Current hashes do not prove identity at the time of the
+historical runs without historical reference digests. The native replay requires
+the original research workspace and assets; the public archive reproduces the
+separate synthetic hosted study, not those private model/data assets.

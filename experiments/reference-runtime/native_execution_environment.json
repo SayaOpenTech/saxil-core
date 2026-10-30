@@ -1,0 +1,45 @@
+{
+  "observed_date": "2026-10-29",
+  "linux_environment": {
+    "distribution": "Ubuntu-24.04",
+    "python": "3.12.3",
+    "torch": "2.6.0+cu124",
+    "transformers": "5.14.1",
+    "peft": "0.20.0",
+    "bitsandbytes": "0.50.0",
+    "flash-linear-attention": "0.2.2",
+    "causal-conv1d": "1.6.2.post1+cu.12.4.torch.2.6"
+  },
+  "hardware": {
+    "gpu": "NVIDIA GeForce RTX 3080",
+    "driver_version": "616.56",
+    "memory_total_mib": 12288,
+    "source": "SayaPCBridge GPU telemetry during governed replay"
+  },
+  "inference": {
+    "seed": 42,
+    "greedy": true,
+    "max_new_tokens": 48,
+    "recipe_compute_dtype": "bfloat16",
+    "quantization": "nf4",
+    "gdn_backend": "optimized",
+    "attention": "sdpa",
+    "fla_bf16_patch": true,
+    "gradient_checkpointing": false,
+    "torch_fallback": false,
+    "training": false,
+    "kernel_cache_reused": true,
+    "latency_equivalence_claim": false
+  },
+  "governed_budget": {
+    "max_wall_seconds": 900,
+    "linux_timeout_seconds": 830,
+    "inference_alarm_seconds": 800,
+    "cpu_threads": 2,
+    "max_system_memory_mib": 16384,
+    "network_allowed": false
+  },
+  "memory_attribution_note": "Runner 16 GiB policy ceiling is not an independent measurement of Linux guest RAM across WSL",
+  "replay_python_sha256": "f9ff0cb9873b630b96fcdce1a98ca2e0c6dc64771c440305441226cd04f0a2f6",
+  "asset_manifest_sha256": "3575d3075884583dfb6e4c04dc9afc9e7995871dcbb2c14984986d17b9d5cd95"
+}
