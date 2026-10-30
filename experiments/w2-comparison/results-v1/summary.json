@@ -1,0 +1,665 @@
+{
+  "study": "SAXIL_W2_STRONG_JSON_COMPARISON_R1",
+  "status": "COMPLETE",
+  "semantic_equivalence_records": 4608,
+  "failed_or_dropped_records": 0,
+  "sdk_version": "0.1.0",
+  "environment": {
+    "python": "3.13.14",
+    "implementation": "CPython",
+    "os": "Windows",
+    "machine": "AMD64"
+  },
+  "all_messages": {
+    "n": 4608,
+    "w2_framed_bytes": 215794,
+    "best_json_framed_bytes": 313169,
+    "w2_reduction_fraction": 0.31093435173979544,
+    "w2_smaller_cases": 4603,
+    "json_smaller_cases": 1,
+    "ties": 4
+  },
+  "primary_groups": {
+    "semantic": {
+      "n": 3072,
+      "w2_framed_bytes": 130789,
+      "best_json_framed_bytes": 180411,
+      "w2_reduction_fraction": 0.27504974752093825,
+      "w2_smaller_cases": 3067,
+      "json_smaller_cases": 1,
+      "ties": 4,
+      "predeclared_20pct_gate_passed": true
+    },
+    "verbal": {
+      "n": 1536,
+      "w2_framed_bytes": 85005,
+      "best_json_framed_bytes": 132758,
+      "w2_reduction_fraction": 0.35969960379035537,
+      "w2_smaller_cases": 1536,
+      "json_smaller_cases": 0,
+      "ties": 0,
+      "predeclared_20pct_gate_passed": true
+    }
+  },
+  "by_family": {
+    "minimal_semantic": {
+      "n": 384,
+      "w2_framed_bytes": 6144,
+      "best_json_framed_bytes": 7539,
+      "w2_reduction_fraction": 0.18503780342220455,
+      "w2_smaller_cases": 379,
+      "json_smaller_cases": 1,
+      "ties": 4
+    },
+    "entity_query": {
+      "n": 384,
+      "w2_framed_bytes": 9216,
+      "best_json_framed_bytes": 11964,
+      "w2_reduction_fraction": 0.22968906720160487,
+      "w2_smaller_cases": 384,
+      "json_smaller_cases": 0,
+      "ties": 0
+    },
+    "literal_names": {
+      "n": 384,
+      "w2_framed_bytes": 16741,
+      "best_json_framed_bytes": 23375,
+      "w2_reduction_fraction": 0.28380748663101607,
+      "w2_smaller_cases": 384,
+      "json_smaller_cases": 0,
+      "ties": 0
+    },
+    "price_frame": {
+      "n": 384,
+      "w2_framed_bytes": 12263,
+      "best_json_framed_bytes": 18371,
+      "w2_reduction_fraction": 0.3324805399814925,
+      "w2_smaller_cases": 384,
+      "json_smaller_cases": 0,
+      "ties": 0
+    },
+    "digit_string_frame": {
+      "n": 384,
+      "w2_framed_bytes": 13824,
+      "best_json_framed_bytes": 21081,
+      "w2_reduction_fraction": 0.3442436317062758,
+      "w2_smaller_cases": 384,
+      "json_smaller_cases": 0,
+      "ties": 0
+    },
+    "condition_frame": {
+      "n": 384,
+      "w2_framed_bytes": 17579,
+      "best_json_framed_bytes": 30243,
+      "w2_reduction_fraction": 0.4187415269649175,
+      "w2_smaller_cases": 384,
+      "json_smaller_cases": 0,
+      "ties": 0
+    },
+    "time_date": {
+      "n": 384,
+      "w2_framed_bytes": 9024,
+      "best_json_framed_bytes": 17171,
+      "w2_reduction_fraction": 0.4744627569739678,
+      "w2_smaller_cases": 384,
+      "json_smaller_cases": 0,
+      "ties": 0
+    },
+    "known_entities": {
+      "n": 384,
+      "w2_framed_bytes": 45998,
+      "best_json_framed_bytes": 50667,
+      "w2_reduction_fraction": 0.09215070953480564,
+      "w2_smaller_cases": 384,
+      "json_smaller_cases": 0,
+      "ties": 0
+    },
+    "verbal_lex": {
+      "n": 384,
+      "w2_framed_bytes": 15064,
+      "best_json_framed_bytes": 26237,
+      "w2_reduction_fraction": 0.4258489918816938,
+      "w2_smaller_cases": 384,
+      "json_smaller_cases": 0,
+      "ties": 0
+    },
+    "verbal_numbers": {
+      "n": 384,
+      "w2_framed_bytes": 13800,
+      "best_json_framed_bytes": 24708,
+      "w2_reduction_fraction": 0.44147644487615345,
+      "w2_smaller_cases": 384,
+      "json_smaller_cases": 0,
+      "ties": 0
+    },
+    "verbal_literals": {
+      "n": 384,
+      "w2_framed_bytes": 38881,
+      "best_json_framed_bytes": 46538,
+      "w2_reduction_fraction": 0.16453221023679576,
+      "w2_smaller_cases": 384,
+      "json_smaller_cases": 0,
+      "ties": 0
+    },
+    "mixed_verbal": {
+      "n": 384,
+      "w2_framed_bytes": 17260,
+      "best_json_framed_bytes": 35275,
+      "w2_reduction_fraction": 0.5107016300496102,
+      "w2_smaller_cases": 384,
+      "json_smaller_cases": 0,
+      "ties": 0
+    }
+  },
+  "by_seed": {
+    "20261030": {
+      "n": 1536,
+      "w2_framed_bytes": 72365,
+      "best_json_framed_bytes": 104830,
+      "w2_reduction_fraction": 0.30969188209482024,
+      "w2_smaller_cases": 1535,
+      "json_smaller_cases": 0,
+      "ties": 1
+    },
+    "20261031": {
+      "n": 1536,
+      "w2_framed_bytes": 72216,
+      "best_json_framed_bytes": 104637,
+      "w2_reduction_fraction": 0.3098425986983572,
+      "w2_smaller_cases": 1533,
+      "json_smaller_cases": 1,
+      "ties": 2
+    },
+    "20261032": {
+      "n": 1536,
+      "w2_framed_bytes": 71213,
+      "best_json_framed_bytes": 103702,
+      "w2_reduction_fraction": 0.31329193265317934,
+      "w2_smaller_cases": 1535,
+      "json_smaller_cases": 0,
+      "ties": 1
+    }
+  },
+  "raw_totals": {
+    "w2": 201309,
+    "json_named": 1161957,
+    "json_dense": 366222,
+    "json_adaptive": 350856
+  },
+  "batch_compression": [
+    {
+      "batch_size": 128,
+      "n": 4608,
+      "batches": 36,
+      "w2_bytes": 104643,
+      "best_json_bytes": 108506,
+      "w2_reduction_fraction": 0.035601717877352446,
+      "details": [
+        {
+          "start": 0,
+          "n": 128,
+          "w2_bytes": 2979,
+          "json_bytes": 3090,
+          "w2_codec": "zlib9",
+          "json_codec": "zlib9",
+          "json_representation": "json_dense"
+        },
+        {
+          "start": 128,
+          "n": 128,
+          "w2_bytes": 2843,
+          "json_bytes": 2952,
+          "w2_codec": "zlib9",
+          "json_codec": "zlib9",
+          "json_representation": "json_dense"
+        },
+        {
+          "start": 256,
+          "n": 128,
+          "w2_bytes": 2748,
+          "json_bytes": 2879,
+          "w2_codec": "zlib9",
+          "json_codec": "zlib9",
+          "json_representation": "json_dense"
+        },
+        {
+          "start": 384,
+          "n": 128,
+          "w2_bytes": 3118,
+          "json_bytes": 3186,
+          "w2_codec": "zlib9",
+          "json_codec": "zlib9",
+          "json_representation": "json_dense"
+        },
+        {
+          "start": 512,
+          "n": 128,
+          "w2_bytes": 3102,
+          "json_bytes": 3230,
+          "w2_codec": "zlib9",
+          "json_codec": "zlib9",
+          "json_representation": "json_dense"
+        },
+        {
+          "start": 640,
+          "n": 128,
+          "w2_bytes": 3150,
+          "json_bytes": 3191,
+          "w2_codec": "zlib9",
+          "json_codec": "zlib9",
+          "json_representation": "json_dense"
+        },
+        {
+          "start": 768,
+          "n": 128,
+          "w2_bytes": 3152,
+          "json_bytes": 3243,
+          "w2_codec": "zlib9",
+          "json_codec": "zlib9",
+          "json_representation": "json_dense"
+        },
+        {
+          "start": 896,
+          "n": 128,
+          "w2_bytes": 2923,
+          "json_bytes": 3007,
+          "w2_codec": "zlib9",
+          "json_codec": "zlib9",
+          "json_representation": "json_dense"
+        },
+        {
+          "start": 1024,
+          "n": 128,
+          "w2_bytes": 2913,
+          "json_bytes": 3037,
+          "w2_codec": "zlib9",
+          "json_codec": "zlib9",
+          "json_representation": "json_dense"
+        },
+        {
+          "start": 1152,
+          "n": 128,
+          "w2_bytes": 2828,
+          "json_bytes": 2994,
+          "w2_codec": "zlib9",
+          "json_codec": "zlib9",
+          "json_representation": "json_dense"
+        },
+        {
+          "start": 1280,
+          "n": 128,
+          "w2_bytes": 2694,
+          "json_bytes": 2769,
+          "w2_codec": "zlib9",
+          "json_codec": "zlib9",
+          "json_representation": "json_dense"
+        },
+        {
+          "start": 1408,
+          "n": 128,
+          "w2_bytes": 2726,
+          "json_bytes": 2857,
+          "w2_codec": "zlib9",
+          "json_codec": "zlib9",
+          "json_representation": "json_dense"
+        },
+        {
+          "start": 1536,
+          "n": 128,
+          "w2_bytes": 2719,
+          "json_bytes": 2785,
+          "w2_codec": "zlib9",
+          "json_codec": "zlib9",
+          "json_representation": "json_dense"
+        },
+        {
+          "start": 1664,
+          "n": 128,
+          "w2_bytes": 2976,
+          "json_bytes": 3120,
+          "w2_codec": "zlib9",
+          "json_codec": "zlib9",
+          "json_representation": "json_dense"
+        },
+        {
+          "start": 1792,
+          "n": 128,
+          "w2_bytes": 2667,
+          "json_bytes": 2834,
+          "w2_codec": "zlib9",
+          "json_codec": "zlib9",
+          "json_representation": "json_dense"
+        },
+        {
+          "start": 1920,
+          "n": 128,
+          "w2_bytes": 2913,
+          "json_bytes": 3038,
+          "w2_codec": "zlib9",
+          "json_codec": "zlib9",
+          "json_representation": "json_dense"
+        },
+        {
+          "start": 2048,
+          "n": 128,
+          "w2_bytes": 2755,
+          "json_bytes": 2941,
+          "w2_codec": "zlib9",
+          "json_codec": "zlib9",
+          "json_representation": "json_dense"
+        },
+        {
+          "start": 2176,
+          "n": 128,
+          "w2_bytes": 2520,
+          "json_bytes": 2644,
+          "w2_codec": "zlib9",
+          "json_codec": "zlib9",
+          "json_representation": "json_dense"
+        },
+        {
+          "start": 2304,
+          "n": 128,
+          "w2_bytes": 2933,
+          "json_bytes": 3040,
+          "w2_codec": "zlib9",
+          "json_codec": "zlib9",
+          "json_representation": "json_dense"
+        },
+        {
+          "start": 2432,
+          "n": 128,
+          "w2_bytes": 2797,
+          "json_bytes": 2941,
+          "w2_codec": "zlib9",
+          "json_codec": "zlib9",
+          "json_representation": "json_dense"
+        },
+        {
+          "start": 2560,
+          "n": 128,
+          "w2_bytes": 3015,
+          "json_bytes": 3133,
+          "w2_codec": "zlib9",
+          "json_codec": "zlib9",
+          "json_representation": "json_dense"
+        },
+        {
+          "start": 2688,
+          "n": 128,
+          "w2_bytes": 3541,
+          "json_bytes": 3583,
+          "w2_codec": "zlib9",
+          "json_codec": "zlib9",
+          "json_representation": "json_adaptive"
+        },
+        {
+          "start": 2816,
+          "n": 128,
+          "w2_bytes": 3190,
+          "json_bytes": 3288,
+          "w2_codec": "zlib9",
+          "json_codec": "zlib9",
+          "json_representation": "json_dense"
+        },
+        {
+          "start": 2944,
+          "n": 128,
+          "w2_bytes": 2939,
+          "json_bytes": 3063,
+          "w2_codec": "zlib9",
+          "json_codec": "zlib9",
+          "json_representation": "json_dense"
+        },
+        {
+          "start": 3072,
+          "n": 128,
+          "w2_bytes": 2668,
+          "json_bytes": 2852,
+          "w2_codec": "zlib9",
+          "json_codec": "zlib9",
+          "json_representation": "json_dense"
+        },
+        {
+          "start": 3200,
+          "n": 128,
+          "w2_bytes": 2915,
+          "json_bytes": 2972,
+          "w2_codec": "zlib9",
+          "json_codec": "zlib9",
+          "json_representation": "json_dense"
+        },
+        {
+          "start": 3328,
+          "n": 128,
+          "w2_bytes": 2973,
+          "json_bytes": 2957,
+          "w2_codec": "zlib9",
+          "json_codec": "zlib9",
+          "json_representation": "json_dense"
+        },
+        {
+          "start": 3456,
+          "n": 128,
+          "w2_bytes": 3138,
+          "json_bytes": 3206,
+          "w2_codec": "zlib9",
+          "json_codec": "zlib9",
+          "json_representation": "json_dense"
+        },
+        {
+          "start": 3584,
+          "n": 128,
+          "w2_bytes": 2972,
+          "json_bytes": 3039,
+          "w2_codec": "zlib9",
+          "json_codec": "zlib9",
+          "json_representation": "json_dense"
+        },
+        {
+          "start": 3712,
+          "n": 128,
+          "w2_bytes": 2943,
+          "json_bytes": 3001,
+          "w2_codec": "zlib9",
+          "json_codec": "zlib9",
+          "json_representation": "json_dense"
+        },
+        {
+          "start": 3840,
+          "n": 128,
+          "w2_bytes": 3285,
+          "json_bytes": 3356,
+          "w2_codec": "zlib9",
+          "json_codec": "zlib9",
+          "json_representation": "json_dense"
+        },
+        {
+          "start": 3968,
+          "n": 128,
+          "w2_bytes": 2979,
+          "json_bytes": 3086,
+          "w2_codec": "zlib9",
+          "json_codec": "zlib9",
+          "json_representation": "json_dense"
+        },
+        {
+          "start": 4096,
+          "n": 128,
+          "w2_bytes": 2700,
+          "json_bytes": 2814,
+          "w2_codec": "zlib9",
+          "json_codec": "zlib9",
+          "json_representation": "json_dense"
+        },
+        {
+          "start": 4224,
+          "n": 128,
+          "w2_bytes": 2590,
+          "json_bytes": 2800,
+          "w2_codec": "zlib9",
+          "json_codec": "zlib9",
+          "json_representation": "json_dense"
+        },
+        {
+          "start": 4352,
+          "n": 128,
+          "w2_bytes": 2720,
+          "json_bytes": 2785,
+          "w2_codec": "zlib9",
+          "json_codec": "zlib9",
+          "json_representation": "json_dense"
+        },
+        {
+          "start": 4480,
+          "n": 128,
+          "w2_bytes": 2619,
+          "json_bytes": 2793,
+          "w2_codec": "zlib9",
+          "json_codec": "zlib9",
+          "json_representation": "json_dense"
+        }
+      ]
+    },
+    {
+      "batch_size": 4608,
+      "n": 4608,
+      "batches": 1,
+      "w2_bytes": 86067,
+      "best_json_bytes": 89220,
+      "w2_reduction_fraction": 0.0353396099529254,
+      "details": [
+        {
+          "start": 0,
+          "n": 4608,
+          "w2_bytes": 86067,
+          "json_bytes": 89220,
+          "w2_codec": "zlib9",
+          "json_codec": "zlib9",
+          "json_representation": "json_dense"
+        }
+      ]
+    }
+  ],
+  "timing": {
+    "w2_encode": {
+      "ns_per_ast_trial": [
+        7447.287326388889,
+        7149.370659722223,
+        7176.3671875,
+        7160.221354166667,
+        7482.335069444444,
+        7190.190972222223,
+        7200.998263888889
+      ],
+      "median_ns_per_ast": 7190.190972222223
+    },
+    "w2_decode": {
+      "ns_per_ast_trial": [
+        12013.216145833334,
+        12356.792534722223,
+        11990.060763888889,
+        12029.578993055555,
+        12477.256944444445,
+        12103.125,
+        12059.852430555555
+      ],
+      "median_ns_per_ast": 12059.852430555555
+    },
+    "json_named_encode": {
+      "ns_per_ast_trial": [
+        19730.09982638889,
+        19708.61545138889,
+        20129.036458333332,
+        19632.335069444445,
+        19673.26388888889,
+        20073.80642361111,
+        19649.088541666668
+      ],
+      "median_ns_per_ast": 19708.61545138889
+    },
+    "json_named_decode": {
+      "ns_per_ast_trial": [
+        15978.949652777777,
+        15968.641493055555,
+        15887.261284722223,
+        15737.651909722223,
+        15735.026041666666,
+        15853.472222222223,
+        15752.191840277777
+      ],
+      "median_ns_per_ast": 15853.472222222223
+    },
+    "json_dense_encode": {
+      "ns_per_ast_trial": [
+        14845.203993055555,
+        14489.474826388889,
+        14428.103298611111,
+        14549.21875,
+        14310.481770833334,
+        14435.004340277777,
+        14988.4765625
+      ],
+      "median_ns_per_ast": 14489.474826388889
+    },
+    "json_dense_decode": {
+      "ns_per_ast_trial": [
+        16830.09982638889,
+        16474.131944444445,
+        16915.581597222223,
+        17549.8046875,
+        16336.653645833334,
+        16421.028645833332,
+        16809.071180555555
+      ],
+      "median_ns_per_ast": 16809.071180555555
+    },
+    "json_adaptive_encode": {
+      "ns_per_ast_trial": [
+        32835.850694444445,
+        32093.815104166668,
+        32145.09548611111,
+        31692.100694444445,
+        31701.453993055555,
+        32963.151041666664,
+        31984.266493055555
+      ],
+      "median_ns_per_ast": 32093.815104166668
+    },
+    "json_adaptive_decode": {
+      "ns_per_ast_trial": [
+        16254.622395833334,
+        16259.244791666666,
+        16391.145833333332,
+        16156.705729166666,
+        16746.65798611111,
+        16604.47048611111,
+        16314.409722222223
+      ],
+      "median_ns_per_ast": 16314.409722222223
+    }
+  },
+  "json_only_transport": {
+    "w2_base64_json_string_plus_4byte_frame": 303516,
+    "best_raw_json_plus_4byte_frame": 369288
+  },
+  "seals": {
+    "phase": "FROZEN_BEFORE_SIZE_AND_TIMING_MEASUREMENT",
+    "records": 4608,
+    "files": {
+      "PRE_REGISTERED_PROTOCOL.json": "d85d06564aef841eba008854c28113736fbf3fb41b05eb0a70d6284efa1a94dd",
+      "json_controls.py": "1e9cfe067ac258c73589bf6d5ac14610a17b0f36890e5ac1e5fae742154e2688",
+      "build_corpus.py": "c71ae20f65a4acdc5770523a0b561b6c224aff4952ea777469d83e32f9f2d961",
+      "run_study.py": "0a1716d72e63688d2a153929356f3c25856848f83a0b47a19aaeaaa93071ba55",
+      "corpus.jsonl": "f08bd7b68521bfd4fa4fc411569895d34aa775f1e35ba137603707bb9381113e"
+    }
+  },
+  "elapsed_seconds": 8.75856070000009,
+  "limits": [
+    "Synthetic balanced supported AST coverage, not a production distribution",
+    "Compression and shared dictionaries are allowed equally",
+    "No neural model, semantic extraction, LLM token or voice latency result",
+    "JSON codec validation work differs; timings are descriptive, not a validation-quality comparison",
+    "Payload and four-byte application framing only; no HTTP/TLS/IP measurements"
+  ]
+}

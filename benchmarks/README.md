@@ -1,9 +1,45 @@
 # Public reproducible serialization benchmark
 
+An [expanded W2/strong-JSON comparison](https://github.com/SayaOpenTech/saxil-core/blob/6fe3b3f55d690cb48e5b5219630a202366c9d85d/experiments/w2-comparison/README.md)
+now covers 4,608 supported synthetic ASTs, shared JSON dictionaries/defaults,
+per-message and batched compression, a separate JSON decoder, and actual
+separate-process TCP validation. It reports both wins and losses; the original
+eight-record benchmark below remains unchanged.
+
 This CPU-only benchmark compares W2 bytes with **compact UTF-8 JSON for the same
 structured AST data**, and measures encode/decode operations. It uses the
 published `saxil-core==0.1.0`, Python's standard library, and eight synthetic
 records: six semantic frames and two closed-vocabulary verbal sequences.
+
+## Measured payload efficiency
+
+A separate expanded study of 4,608 supported synthetic messages found that the
+released W2 encoder used **31.1% fewer framed application bytes overall** than
+the study's strongest declared JSON encoding/compression choices, while
+preserving every AST field. The study measured 27.5% fewer bytes for semantic
+frames and 36.0% fewer for structured verbal messages. This is evidence for a
+payload-efficiency advantage when these structured messages are transferred
+independently over a binary-capable channel; it is not a general claim about all
+workloads or serialization formats. See the [full comparison and its workload
+details](https://github.com/SayaOpenTech/saxil-core/blob/978c9ec8d68eeec8490d66fb2a0e1e0b7baf7dc7/experiments/w2-comparison/README.md).
+
+## Exact-value reference pattern
+
+A separate replay of two frozen adapted-model arms compared direct numeric
+generation with `VALUE_REF` plus a host-side resolver on the same 450 held-out
+diagnostic cases. Direct generation reproduced **52/450 exact values (11.6%)**;
+the reference arm reproduced **435/450 (96.7%)**. Every per-case score and
+decoded value matched the archived outputs. This is evidence for exact-value
+reference selection in that specific adapted-model diagnostic, not a general
+model guarantee or an independent training replication.
+
+The [synthetic quote example](https://github.com/SayaOpenTech/saxil-core/blob/4fb5761c32fce4f6089521e69022272eeb136a68/experiments/reference-runtime/examples/price_quote_value_reference.py)
+shows how an application can resolve a selected reference to a host-owned exact
+amount and reject an unknown alias. Selection is simulated in the example. The
+experimental resolver is outside the released W2/SDK API; equivalent reference
+handling is possible in JSON, and a separate hosted-model study established no
+accuracy advantage over JSON references. See the [revalidation report and
+limits](https://github.com/SayaOpenTech/saxil-core/blob/4fb5761c32fce4f6089521e69022272eeb136a68/experiments/reference-runtime/NATIVE_REVALIDATION.fa.md).
 
 ## Data provenance and equivalence
 

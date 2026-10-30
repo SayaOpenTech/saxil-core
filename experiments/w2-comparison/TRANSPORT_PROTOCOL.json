@@ -1,0 +1,11 @@
+{
+  "phase": "FOLLOWUP_OPERATIONAL_VALIDATION_REGISTERED_BEFORE_TRANSPORT",
+  "relation_to_primary_study": "Same frozen corpus; not a new independent sample or model evaluation",
+  "transport": "Loopback TCP, separate receiver process, 4-byte big-endian payload length, one-byte adaptive compression marker, zero-length termination frame",
+  "arms": ["w2", "json"],
+  "messages_per_arm": 4608,
+  "gate": "Every received AST canonical all-field digest equals the sender's original AST; zero delivery/order/meaning differences",
+  "metrics": ["actual receiver application bytes", "returned digest bytes", "decoded messages", "sender equality checks"],
+  "limits": "No TCP/IP/TLS packet-overhead or network latency superiority claim; same existing synthetic data; valid-input operational validation, not adversarial receiver security testing",
+  "network_scope": "127.0.0.1 only; no remote services or credentials"
+}

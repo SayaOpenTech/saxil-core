@@ -1,0 +1,63 @@
+{
+  "id": "SAXIL-REFERENCE-HOSTED-FRESH-V2",
+  "date": "2026-10-29",
+  "scope": "Known semantic request to exact output fields; fresh synthetic reference-runtime test, NOT historical replication, W2, R2 or raw Persian understanding",
+  "model": "qwen/qwen3.5-9b",
+  "provider_only": "parasail",
+  "provider_fallbacks": false,
+  "temperature": 0,
+  "reasoning_enabled": false,
+  "max_output_tokens": 512,
+  "inference_seeds": [
+    42,
+    43,
+    44
+  ],
+  "training_performed": false,
+  "case_generation_seed": 20261029,
+  "families": [
+    "price",
+    "phone",
+    "date",
+    "time",
+    "duration",
+    "percentage",
+    "price_discount",
+    "start_duration",
+    "two_durations",
+    "same_role_offers",
+    "unicode_name",
+    "two_entities"
+  ],
+  "cases": 120,
+  "cases_per_family": 10,
+  "arms": [
+    "direct_json",
+    "reference_json",
+    "reference_alias"
+  ],
+  "planned_requests": 1080,
+  "concurrency": 6,
+  "timeout_seconds_per_request": 45,
+  "retries": 0,
+  "max_api_budget_usd": 1.0,
+  "primary_metric": "Exact final action, requested role sets, entity text and value text; invalid/rejected/HTTP failures count as incorrect",
+  "release_gates": {
+    "overall_exact_minimum": 0.99,
+    "each_positive_family_minimum": 0.95
+  },
+  "comparisons": [
+    "Direct literal generation vs external reference architecture",
+    "JSON refs vs alias refs with identical tables and resolver"
+  ],
+  "limitations": [
+    "Alias output is a benchmark selection notation, not the native SAXIL tokenizer or W2 grammar",
+    "Same Qwen family but 9B hosted model is not the original trained 4B checkpoint",
+    "Inference seed repeats are not independent training replications",
+    "All semantic targets are already known by the host; a deterministic realizer is also sufficient",
+    "Only reference arms omit exact literals from model context; this is an architecture comparison",
+    "Latency is concurrent external API wall time, not end-to-end voice latency",
+    "Runtime guards cannot detect a wrong valid same-role reference; gold scoring must do so"
+  ],
+  "api_documentation": "https://openrouter.ai/docs/api/api-reference/chat/send-chat-completion-request"
+}

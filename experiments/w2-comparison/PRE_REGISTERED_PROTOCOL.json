@@ -1,0 +1,36 @@
+{
+  "study": "SAXIL_W2_STRONG_JSON_COMPARISON_R1",
+  "registered_date_client": "2026-10-30",
+  "status_at_creation": "PRE_MEASUREMENT",
+  "revision": "1.1-pre-measurement-api-domain-correction",
+  "preflight_correction": "Before any size/timing result: published W2 entity IDs are 1..255; Num strings preserve digit-only strings, not decimal punctuation. Original draft retained separately. No corpus or result existed when corrected.",
+  "scope": "Released W2-v1 serialization of already structured supported ASTs; no model, no training, no free-text compression claim",
+  "sdk_version": "0.1.0",
+  "sdk_wheel_sha256": "28c56cb52849bd6f4803d3e322ee7b93f2a1c1a48a4532aa41fca655347d3cf0",
+  "seeds": [20261030, 20261031, 20261032],
+  "cases_per_family_per_seed": 128,
+  "families": ["minimal_semantic", "entity_query", "literal_names", "price_frame", "digit_string_frame", "condition_frame", "time_date", "known_entities", "verbal_lex", "verbal_numbers", "verbal_literals", "mixed_verbal"],
+  "total_records": 4608,
+  "baselines": [
+    "compact UTF-8 named-field JSON without null/default optional fields",
+    "schema-specific positional JSON with the same W2 enums/LEX dictionary and trailing defaults omitted",
+    "adaptive dense/sparse JSON with shared defaults and no redundant nested type tags",
+    "per-message raw/zlib1/zlib9/gzip1/gzip9 adaptation for both W2 and all JSON baselines, with a one-byte codec selector",
+    "whole-corpus and fixed 128-record batches compressed for both representations"
+  ],
+  "primary_hypotheses": {
+    "H_semantic_payload": "At least 20% fewer total framed application bytes for W2 adaptive compression than strongest declared JSON adaptive compression across all eight semantic families",
+    "H_verbal_payload": "At least 20% fewer total framed application bytes for W2 adaptive compression than strongest declared JSON adaptive compression across all four verbal families"
+  },
+  "correctness_gate": "100% equality across every dataclass field for original AST, W2 decoded AST and all JSON decoded ASTs; canonical roundtrip; no dropped/failed records",
+  "framing": "Each independently transferred message has the same four-byte length prefix. Adaptive compression adds one byte for its codec selector. No HTTP/TLS/IP overhead claimed measured.",
+  "timing": {"trials": 7, "warmup_passes": 2, "corpus_passes_per_trial": 1, "order": "rotate representations per trial", "metrics": ["encode AST to bytes", "decode bytes to AST"], "claim_gate": "No latency superiority claim from size; actual native codec timings reported separately; validation work is not identical"},
+  "controls": [
+    "Defaults for required enums are first enum values; optional defaults follow published dataclasses. Numeric required defaults are zero except entity IDs use their lowest valid value 1; open strings default empty.",
+    "Schemas and code hashes are frozen before main size/timing measurement. A change requires a separately versioned run.",
+    "Every family and seed is reported, including losses. Balanced synthetic coverage is not a production workload sample.",
+    "A pass establishes a bounded engineering payload advantage over these JSON encodings, not unique superiority over all binary formats or model accuracy.",
+    "Batched/stream compression results are reported even if they remove or reverse the independent-message advantage.",
+    "No paid inference, no GPU, no published SDK/source/protocol changes. Existing private historical artifacts remain immutable."
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "cases": 120,
+  "source_coverage_valid": 120,
+  "oracle_runtime_exact": 120,
+  "model_calls": 0,
+  "interpretation": "Runtime plumbing only; a deterministic direct JSON realizer also reconstructs all known requested fields"
+}

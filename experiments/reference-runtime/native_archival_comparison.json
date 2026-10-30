@@ -1,0 +1,193 @@
+{
+  "status": "ALL_FOUR_ARMS_COMPARED",
+  "comparisons": {
+    "value_a": {
+      "n": 450,
+      "counts": {
+        "parse_ok": {
+          "historical_count": 344,
+          "replay_count": 344,
+          "n": 450,
+          "historical_rate": 0.7644444444444445,
+          "replay_rate": 0.7644444444444445,
+          "per_case_flag_differences": 0
+        },
+        "exact_value": {
+          "historical_count": 52,
+          "replay_count": 52,
+          "n": 450,
+          "historical_rate": 0.11555555555555555,
+          "replay_rate": 0.11555555555555555,
+          "per_case_flag_differences": 0
+        },
+        "action_ok": {
+          "historical_count": 344,
+          "replay_count": 344,
+          "n": 450,
+          "historical_rate": 0.7644444444444445,
+          "replay_rate": 0.7644444444444445,
+          "per_case_flag_differences": 0
+        }
+      },
+      "archived_csv_sha256": "0ab5b3c15619b9d438d9e04a3cd3c92d07d80915d836489229542539ec73f283",
+      "replay_metrics_sha256": "f60b19659bc6d2e55bb7ce653eddb4c4375ef79b2bef410b039e9eb2e9ef350e",
+      "replay_rows_sha256": "3a6cbb77b800591c55cc541ff554a498d19b9817f54aceffeec2e7a4ccd37e08",
+      "decoded_gold_value_differences": 0,
+      "decoded_pred_value_differences": 0
+    },
+    "value_b": {
+      "n": 450,
+      "counts": {
+        "parse_ok": {
+          "historical_count": 450,
+          "replay_count": 450,
+          "n": 450,
+          "historical_rate": 1.0,
+          "replay_rate": 1.0,
+          "per_case_flag_differences": 0
+        },
+        "exact_value": {
+          "historical_count": 435,
+          "replay_count": 435,
+          "n": 450,
+          "historical_rate": 0.9666666666666667,
+          "replay_rate": 0.9666666666666667,
+          "per_case_flag_differences": 0
+        },
+        "action_ok": {
+          "historical_count": 450,
+          "replay_count": 450,
+          "n": 450,
+          "historical_rate": 1.0,
+          "replay_rate": 1.0,
+          "per_case_flag_differences": 0
+        }
+      },
+      "archived_csv_sha256": "5587ee2689a62dee38cabd9d53452d36cc2c2f0cc1c1d55b59b6cacbc6ef2bf7",
+      "replay_metrics_sha256": "aa0acffceda3919a101155dc8855d111d9703be262fd6897cc48b1322e5299e5",
+      "replay_rows_sha256": "7d3a46116ed783209c2caeefa4098d061757debfe2d13adc262c5fa1d2f30db1",
+      "decoded_gold_value_differences": 0,
+      "decoded_pred_value_differences": 0
+    },
+    "entity_a": {
+      "n": 208,
+      "counts": {
+        "parse_ok": {
+          "historical_count": 92,
+          "replay_count": 92,
+          "n": 208,
+          "historical_rate": 0.4423076923076923,
+          "replay_rate": 0.4423076923076923,
+          "per_case_flag_differences": 0
+        },
+        "ok_entity_ref": {
+          "historical_count": 102,
+          "replay_count": 102,
+          "n": 208,
+          "historical_rate": 0.49038461538461536,
+          "replay_rate": 0.49038461538461536,
+          "per_case_flag_differences": 0
+        },
+        "ok_task": {
+          "historical_count": 43,
+          "replay_count": 43,
+          "n": 208,
+          "historical_rate": 0.20673076923076922,
+          "replay_rate": 0.20673076923076922,
+          "per_case_flag_differences": 0
+        },
+        "ok_entity": {
+          "historical_count": 72,
+          "replay_count": 72,
+          "n": 208,
+          "historical_rate": 0.34615384615384615,
+          "replay_rate": 0.34615384615384615,
+          "per_case_flag_differences": 0
+        },
+        "ok_number": {
+          "historical_count": 70,
+          "replay_count": 70,
+          "n": 208,
+          "historical_rate": 0.33653846153846156,
+          "replay_rate": 0.33653846153846156,
+          "per_case_flag_differences": 0
+        },
+        "ok_negation": {
+          "historical_count": 80,
+          "replay_count": 80,
+          "n": 208,
+          "historical_rate": 0.38461538461538464,
+          "replay_rate": 0.38461538461538464,
+          "per_case_flag_differences": 0
+        }
+      },
+      "archived_csv_sha256": "827b3c0c510e05a4d8ab534c0b5b2ea40bfa0494867437b725a1d89156ed21f0",
+      "replay_metrics_sha256": "b68f2c929ae1a042da959238eda8eabe5a37eb8a30fa5091c702053b2ed84de4",
+      "replay_rows_sha256": "093d087512fe8da917569f912ec0955c9594099c17a7a0a773cf014e1d356e34",
+      "realized_text_differences": 0
+    },
+    "entity_b": {
+      "n": 208,
+      "counts": {
+        "parse_ok": {
+          "historical_count": 168,
+          "replay_count": 168,
+          "n": 208,
+          "historical_rate": 0.8076923076923077,
+          "replay_rate": 0.8076923076923077,
+          "per_case_flag_differences": 0
+        },
+        "ok_entity_ref": {
+          "historical_count": 174,
+          "replay_count": 174,
+          "n": 208,
+          "historical_rate": 0.8365384615384616,
+          "replay_rate": 0.8365384615384616,
+          "per_case_flag_differences": 0
+        },
+        "ok_task": {
+          "historical_count": 128,
+          "replay_count": 128,
+          "n": 208,
+          "historical_rate": 0.6153846153846154,
+          "replay_rate": 0.6153846153846154,
+          "per_case_flag_differences": 0
+        },
+        "ok_entity": {
+          "historical_count": 110,
+          "replay_count": 110,
+          "n": 208,
+          "historical_rate": 0.5288461538461539,
+          "replay_rate": 0.5288461538461539,
+          "per_case_flag_differences": 0
+        },
+        "ok_number": {
+          "historical_count": 100,
+          "replay_count": 100,
+          "n": 208,
+          "historical_rate": 0.4807692307692308,
+          "replay_rate": 0.4807692307692308,
+          "per_case_flag_differences": 0
+        },
+        "ok_negation": {
+          "historical_count": 152,
+          "replay_count": 152,
+          "n": 208,
+          "historical_rate": 0.7307692307692307,
+          "replay_rate": 0.7307692307692307,
+          "per_case_flag_differences": 0
+        }
+      },
+      "archived_csv_sha256": "72b244068976453239a04a0d882cb034bc70c7b9838a0ced8686239a72c0bdc5",
+      "replay_metrics_sha256": "589a8408b741c79acde9d04e91bd80525cefeddc98a8c819d8a77fc59415493a",
+      "replay_rows_sha256": "7f027ac4c6e65500567a1f441c7ce9f69c853be7f3e4189e14bc50d9f31b799e",
+      "realized_text_differences": 0
+    }
+  },
+  "caveats": [
+    "Same current checkpoint reevaluation, not independent retraining.",
+    "Archived CSV identity is captured now; no historical digest is available.",
+    "Auxiliary literal Arm A value_ref semantics differ in the current evaluator and are excluded.",
+    "Entity reference-set agreement is not sufficient for parse or task correctness."
+  ]
+}

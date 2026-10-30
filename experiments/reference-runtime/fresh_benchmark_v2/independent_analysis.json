@@ -1,0 +1,116 @@
+{
+  "status": "INDEPENDENT_RESCORING_COMPLETE",
+  "distinct_cases": 120,
+  "responses": 1080,
+  "score_discrepancies": [],
+  "seal_valid": true,
+  "historical_checkpoint_replayed": false,
+  "providers": {
+    "Parasail": 1072,
+    "NO_RESPONSE": 8
+  },
+  "models": {
+    "qwen/qwen3.5-9b": 1072,
+    "NO_RESPONSE": 8
+  },
+  "arms": {
+    "direct_json": {
+      "n": 360,
+      "correct": 355,
+      "failures": [
+        {
+          "case_id": "fresh-unicode_name-09",
+          "seed": 44,
+          "family": "unicode_name",
+          "content": "",
+          "error": 429
+        },
+        {
+          "case_id": "fresh-phone-05",
+          "seed": 43,
+          "family": "phone",
+          "content": "",
+          "error": 429
+        },
+        {
+          "case_id": "fresh-duration-03",
+          "seed": 43,
+          "family": "duration",
+          "content": "",
+          "error": 429
+        },
+        {
+          "case_id": "fresh-date-03",
+          "seed": 42,
+          "family": "date",
+          "content": "",
+          "error": 429
+        },
+        {
+          "case_id": "fresh-two_durations-08",
+          "seed": 44,
+          "family": "two_durations",
+          "content": "",
+          "error": 429
+        }
+      ]
+    },
+    "reference_json": {
+      "n": 360,
+      "correct": 359,
+      "failures": [
+        {
+          "case_id": "fresh-start_duration-00",
+          "seed": 44,
+          "family": "start_duration",
+          "content": "",
+          "error": 429
+        }
+      ]
+    },
+    "reference_alias": {
+      "n": 360,
+      "correct": 358,
+      "failures": [
+        {
+          "case_id": "fresh-phone-01",
+          "seed": 42,
+          "family": "phone",
+          "content": "",
+          "error": 429
+        },
+        {
+          "case_id": "fresh-start_duration-02",
+          "seed": 42,
+          "family": "start_duration",
+          "content": "",
+          "error": 429
+        }
+      ]
+    }
+  },
+  "paired_case_cluster_intervals": [
+    {
+      "a": "direct_json",
+      "b": "reference_json",
+      "b_minus_a": 0.01111111111111111,
+      "bootstrap_95_percent_interval": [
+        0.0,
+        0.025
+      ],
+      "clusters": 120,
+      "bootstrap_resamples": 10000
+    },
+    {
+      "a": "reference_json",
+      "b": "reference_alias",
+      "b_minus_a": -0.0027777777777777775,
+      "bootstrap_95_percent_interval": [
+        -0.013888888888888888,
+        0.005555555555555555
+      ],
+      "clusters": 120,
+      "bootstrap_resamples": 10000
+    }
+  ]
+}

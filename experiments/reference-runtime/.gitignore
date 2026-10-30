@@ -1,0 +1,11 @@
+__pycache__/
+candidate/build/
+candidate/dist/
+candidate/src/*.egg-info/
+fresh_benchmark/
+fresh_benchmark_v2/cases.json
+fresh_benchmark_v2/prompts.json
+fresh_benchmark_v2/predictions.jsonl
+fresh_benchmark_v2/preflight.json
+fresh_benchmark_v2/provider_metadata.json
+fresh_benchmark_v2/seal.json
