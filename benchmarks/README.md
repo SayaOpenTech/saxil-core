@@ -11,6 +11,18 @@ structured AST data**, and measures encode/decode operations. It uses the
 published `saxil-core==0.1.0`, Python's standard library, and eight synthetic
 records: six semantic frames and two closed-vocabulary verbal sequences.
 
+## Measured payload efficiency
+
+A separate expanded study of 4,608 supported synthetic messages found that the
+released W2 encoder used **31.1% fewer framed application bytes overall** than
+the study's strongest declared JSON encoding/compression choices, while
+preserving every AST field. The study measured 27.5% fewer bytes for semantic
+frames and 36.0% fewer for structured verbal messages. This is evidence for a
+payload-efficiency advantage when these structured messages are transferred
+independently over a binary-capable channel; it is not a general claim about all
+workloads or serialization formats. See the [full comparison and its workload
+details](https://github.com/SayaOpenTech/saxil-core/blob/978c9ec8d68eeec8490d66fb2a0e1e0b7baf7dc7/experiments/w2-comparison/README.md).
+
 ## Data provenance and equivalence
 
 [corpus.json](corpus.json) was authored for this public repository under

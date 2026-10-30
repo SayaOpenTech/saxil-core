@@ -18,7 +18,8 @@ frames and 35.97% fewer on structured verbal messages. All-message reduction is
 JSON has shared enum/LEX dictionaries, dense/sparse defaults, UTF-8 without
 whitespace, and an optimistic best choice among three encodings and five
 compression modes. Both sides pay the same framing/codec-marker overhead.
-Batch compression reduces the advantage to about 3.5%. Other binary codecs and
+The result depends on how messages are framed and compressed; the detailed
+Persian report includes a batch-compression control. Other binary codecs and
 all conceivable JSON schemas were not compared. Timing results describe these
 implementations and differing validation work; they do not establish universal
 codec or end-to-end speed superiority.
