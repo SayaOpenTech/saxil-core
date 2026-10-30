@@ -23,6 +23,24 @@ independently over a binary-capable channel; it is not a general claim about all
 workloads or serialization formats. See the [full comparison and its workload
 details](https://github.com/SayaOpenTech/saxil-core/blob/978c9ec8d68eeec8490d66fb2a0e1e0b7baf7dc7/experiments/w2-comparison/README.md).
 
+## Exact-value reference pattern
+
+A separate replay of two frozen adapted-model arms compared direct numeric
+generation with `VALUE_REF` plus a host-side resolver on the same 450 held-out
+diagnostic cases. Direct generation reproduced **52/450 exact values (11.6%)**;
+the reference arm reproduced **435/450 (96.7%)**. Every per-case score and
+decoded value matched the archived outputs. This is evidence for exact-value
+reference selection in that specific adapted-model diagnostic, not a general
+model guarantee or an independent training replication.
+
+The [synthetic quote example](https://github.com/SayaOpenTech/saxil-core/blob/4fb5761c32fce4f6089521e69022272eeb136a68/experiments/reference-runtime/examples/price_quote_value_reference.py)
+shows how an application can resolve a selected reference to a host-owned exact
+amount and reject an unknown alias. Selection is simulated in the example. The
+experimental resolver is outside the released W2/SDK API; equivalent reference
+handling is possible in JSON, and a separate hosted-model study established no
+accuracy advantage over JSON references. See the [revalidation report and
+limits](https://github.com/SayaOpenTech/saxil-core/blob/4fb5761c32fce4f6089521e69022272eeb136a68/experiments/reference-runtime/NATIVE_REVALIDATION.fa.md).
+
 ## Data provenance and equivalence
 
 [corpus.json](corpus.json) was authored for this public repository under
