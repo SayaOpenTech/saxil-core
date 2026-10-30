@@ -1,6 +1,6 @@
 # Public reproducible serialization benchmark
 
-An [expanded W2/strong-JSON comparison](../experiments/w2-comparison/README.md)
+An [expanded W2/strong-JSON comparison](https://github.com/SayaOpenTech/saxil-core/blob/6fe3b3f55d690cb48e5b5219630a202366c9d85d/experiments/w2-comparison/README.md)
 now covers 4,608 supported synthetic ASTs, shared JSON dictionaries/defaults,
 per-message and batched compression, a separate JSON decoder, and actual
 separate-process TCP validation. It reports both wins and losses; the original
