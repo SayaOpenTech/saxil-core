@@ -1,5 +1,11 @@
 # Public reproducible serialization benchmark
 
+An [expanded W2/strong-JSON comparison](../experiments/w2-comparison/README.md)
+now covers 4,608 supported synthetic ASTs, shared JSON dictionaries/defaults,
+per-message and batched compression, a separate JSON decoder, and actual
+separate-process TCP validation. It reports both wins and losses; the original
+eight-record benchmark below remains unchanged.
+
 This CPU-only benchmark compares W2 bytes with **compact UTF-8 JSON for the same
 structured AST data**, and measures encode/decode operations. It uses the
 published `saxil-core==0.1.0`, Python's standard library, and eight synthetic

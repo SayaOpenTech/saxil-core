@@ -1,0 +1,63 @@
+{
+  "status": "SECOND_PASS_AUDIT_PASSED",
+  "records": 4608,
+  "semantic_decoder": "separate JSON decoder; published W2 SDK",
+  "all_field_differences": 0,
+  "size_or_compression_discrepancies": 0,
+  "seal_valid": true,
+  "primary_totals": {
+    "semantic": [
+      3072,
+      130789,
+      180411
+    ],
+    "verbal": [
+      1536,
+      85005,
+      132758
+    ],
+    "all": [
+      4608,
+      215794,
+      313169
+    ]
+  },
+  "w2_ties_or_losses": [
+    {
+      "id": "20261031-minimal_semantic-016",
+      "family": "minimal_semantic",
+      "w2_bytes": 16,
+      "json_bytes": 16
+    },
+    {
+      "id": "20261031-minimal_semantic-055",
+      "family": "minimal_semantic",
+      "w2_bytes": 16,
+      "json_bytes": 14
+    },
+    {
+      "id": "20261031-minimal_semantic-085",
+      "family": "minimal_semantic",
+      "w2_bytes": 16,
+      "json_bytes": 16
+    },
+    {
+      "id": "20261032-minimal_semantic-009",
+      "family": "minimal_semantic",
+      "w2_bytes": 16,
+      "json_bytes": 16
+    },
+    {
+      "id": "20261030-minimal_semantic-072",
+      "family": "minimal_semantic",
+      "w2_bytes": 16,
+      "json_bytes": 16
+    }
+  ],
+  "result_files_sha256": {
+    "independent_audit.json": "2d8d8e533fbcb26f23ae7c569ebf4b75f2c6ffa9df400e7f58263ca1bcc9247d",
+    "measurements.jsonl": "0ccdb7307cef463c91d41a129f9d798945a930a8565d231c185608a7fd3bb6c1",
+    "raw_packets.jsonl": "f8ffbc3c3ae074153020890af31b90ed1a856e5335f8ff1f7841c948149a3eed",
+    "summary.json": "33158e500b47f8580f09941aef38697976af66d7c125023060ff0c1d729ca830"
+  }
+}

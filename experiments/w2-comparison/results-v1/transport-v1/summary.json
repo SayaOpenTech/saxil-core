@@ -1,0 +1,21 @@
+{
+  "w2": {
+    "arm": "w2",
+    "decoded_messages": 4608,
+    "actual_received_application_bytes": 215798,
+    "actual_sent_digest_bytes": 147456,
+    "sender_checked_ast_digests": 4608,
+    "all_field_or_order_discrepancies": 0
+  },
+  "json": {
+    "arm": "json",
+    "decoded_messages": 4608,
+    "actual_received_application_bytes": 313173,
+    "actual_sent_digest_bytes": 147456,
+    "sender_checked_ast_digests": 4608,
+    "all_field_or_order_discrepancies": 0
+  },
+  "status": "ACTUAL_TCP_TRANSFER_VALIDATED",
+  "forward_application_byte_reduction": 0.310930380332915,
+  "scope": "Separate receiver process; application bytes including termination frame; no TCP/IP/TLS or latency claim"
+}
