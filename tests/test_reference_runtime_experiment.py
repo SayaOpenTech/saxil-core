@@ -32,6 +32,27 @@ def test_reference_runtime_behavior():
     _run(["-m", "unittest", "discover", "-s", "candidate/tests", "-v"], EXPERIMENT, source=EXPERIMENT / "candidate/src")
 
 
+def test_exact_quote_reference_example():
+    environment = dict(os.environ)
+    environment["PYTHONPATH"] = str(EXPERIMENT / "candidate/src")
+    result = subprocess.run(
+        [sys.executable, "-B", "examples/price_quote_value_reference.py"],
+        cwd=EXPERIMENT,
+        env=environment,
+        capture_output=True,
+        text=True,
+        encoding="utf-8",
+        errors="replace",
+        timeout=60,
+    )
+    assert result.returncode == 0, result.stdout + result.stderr
+    assert result.stdout.splitlines() == [
+        "selected=VAL_E1",
+        "exact_price=1,199,000 TOMAN",
+        "unknown_alias=REJECTED",
+    ]
+
+
 def test_read_only_replay_inspection():
     _run(["-m", "unittest", "test_inspect_replay_assets", "-v"], EXPERIMENT)
 

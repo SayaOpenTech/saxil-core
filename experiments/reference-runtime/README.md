@@ -35,6 +35,42 @@ The host already knows the requested semantic fields. A deterministic realizer
 is also sufficient for these cases. Three inference seeds repeat the same 120
 cases; they are not independent training replications.
 
+## Developer example: exact quote value
+
+[`examples/price_quote_value_reference.py`](examples/price_quote_value_reference.py)
+shows a host keeping two synthetic quote amounts and resolving the selected
+`VAL_E*` alias to the original exact string. The resolver checks turn scope,
+generation, value type, application role and unit; an unknown reference is
+rejected. The alias selection is a fixture: the script does not call a model,
+encode W2, accept a quote, or initiate a payment. A model can still choose the
+wrong valid quote, so business confirmation and selection-quality checks remain
+the application's responsibility.
+
+The motivation is the [frozen-checkpoint revalidation](NATIVE_REVALIDATION.fa.md):
+direct numeric generation reproduced 52/450 exact values, while `VALUE_REF`
+reproduced 435/450; all per-case scores matched the archived outputs. This was a
+replay of an adapted-model diagnostic, not independent retraining. The separate
+fresh hosted-model evaluation above found no accuracy advantage over JSON
+references. Equivalent JSON references and resolvers are possible, and output
+token counts do not establish an end-to-end saving when prompts include the
+candidate values. Treat the example as an application-layer pattern, not a
+released W2 or SDK feature.
+
+Run it after installing the isolated candidate:
+
+```sh
+python -m pip install ./candidate
+python examples/price_quote_value_reference.py
+```
+
+Expected output:
+
+```text
+selected=VAL_E1
+exact_price=1,199,000 TOMAN
+unknown_alias=REJECTED
+```
+
 ## Offline reproduction
 
 The compressed archive contains synthetic cases, frozen prompts/protocol/seals,

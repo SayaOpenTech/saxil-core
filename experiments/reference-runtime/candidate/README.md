@@ -31,6 +31,19 @@ value = turn.resolve_value(selected, expected_type=ValueType.PRICE,
 assert value.exact_text == "1234500"
 ```
 
+For a complete synthetic quote-selection flow, see
+[`examples/price_quote_value_reference.py`](../examples/price_quote_value_reference.py)
+in the research directory. It demonstrates exact string resolution and
+fail-closed handling for an unknown alias. The model selection is simulated;
+the example makes no claim about model accuracy or W2 support.
+
+Run it from `experiments/reference-runtime` after installing this candidate:
+
+```text
+python -m pip install ./candidate
+python examples/price_quote_value_reference.py
+```
+
 Populate tables only from semantic input, explicit session state or actual tool
 results. The origin enum records a host assertion; it cannot prove that the host
 did not copy a gold answer. Dataset provenance must be audited separately.
